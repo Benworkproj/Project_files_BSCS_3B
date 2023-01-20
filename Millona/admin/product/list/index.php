@@ -2,11 +2,21 @@
 
 session_start();
 
-require_once '../../../app/core/Redirect.php';
-
-redirect_not_authenticated_user($_SESSION['user'], '/foodhouse/auth/login.php');
-
 require_once '../../../app/config/env.php';
+require_once '../../../app/core/Redirect.php';
+require_once '../../../app/config/assets_path.php';
+
+
+redirect_not_authenticated_user($_SESSION['user'], LOGIN);
+
+if (isset($_SESSION['user'])) {
+    if ($_SESSION['user']['user_level'] === '0') {
+        header('Location:' . PAGE3);
+    } else if ($_SESSION['user']['user_level'] === '2') {
+        header('Location:' . PAGE2);
+    }
+}
+
 require_once '../../../app/config/Connection.php';
 
 
@@ -50,7 +60,7 @@ $result = $conn->query($sql);
 
                 <!-- add product page -->
                 <div class="card-body">
-                    <a href="/foodhouse/admin/product/add" class="btn btn-primary btn-sm">Add Product</a>
+                    <a href="<?= PRODUCT_PATH['create'] ?>" class="btn btn-primary btn-sm">Add Product</a>
                 </div>
 
                 <div class="card-body">
@@ -86,13 +96,13 @@ $result = $conn->query($sql);
                                             <?= $row['price'] ?>
                                         </td>
                                         <td>
-                                            <img src="/foodhouse/public/uploads/<?= $row['img'] ?>" alt="" width="100px">
+                                            <img src="<?= UPLOADS_PATH ?>/<?= $row['img'] ?>" alt="" width="100px">
                                         </td>
-                                        
-                                        <td>
-                                            <a href="/foodhouse/admin/product/edit/index.php?id=<?= $row['id'] ?>" class="btn btn-primary btn-sm">Edit</a>
 
-                                            <a href="/foodhouse/admin/product/delete/index.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
+                                        <td>
+                                            <a href="<?= PRODUCT_PATH['edit'] ?>/index.php?id=<?= $row['id'] ?>" class="btn btn-primary btn-sm">Edit</a>
+
+                                            <a href="<?= PRODUCT_PATH['delete'] ?>/index.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
                                         </td>
                                     </tr>
                                 <?php endwhile; ?>

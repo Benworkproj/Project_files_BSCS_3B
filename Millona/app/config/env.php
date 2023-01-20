@@ -2,47 +2,38 @@
 // --------------------- DB CREDENTIALS --------------------------------------
 const DB_HOST = 'localhost';
 const DB_NAME = 'foodhouse';
-const DB_USER = 'root_PATH';
+const DB_USER = 'root';
 const DB_PASSWORD = '';
 
 // --------------------- PATHS --------------------------------------
 
-// get the root path of the project and use it to define the other paths
+const ROOT_PATH = "/Millona";
 
-$ROOT_PATH = dirname(__DIR__, 2);
+const LOGOUT = ROOT_PATH . "/auth/logout.php";
+const LOGIN = ROOT_PATH . "/auth/login.php";
+const MAINFOODPAGE = ROOT_PATH . "/foods";
 
-$LOGOUT = $ROOT_PATH . "/auth/logout.php";
-$LOGIN = $ROOT_PATH . "/auth/login.php";
-$MAINFOODPAGE = $ROOT_PATH . "/foodhouse/foods/";
+const CARTPAGE = "../../carts/index.php";
+const PAGE3 = ROOT_PATH . "/page3";
+const PAGE2 = ROOT_PATH . "/page2";
+const LOGO = ROOT_PATH."/public/assets/img/Restaurant Food.png";
 
-$ADMIN = $ROOT_PATH . "/admin";
+const ADMIN = ROOT_PATH . "/admin";
 
-$PRODUCT_PATH = [
-    'index' => $ROOT_PATH . "/admin/product/index.php",
-    'create' => $ROOT_PATH . "/admin/product/add",
-    'edit' => $ROOT_PATH . "/admin/product/edit",
-    'delete' => $ROOT_PATH . "/admin/product/delete",
-    'list' => $ROOT_PATH . "/admin/product/list",
+const PRODUCT_PATH = [
+    'index' => ROOT_PATH . "/admin/product/index.php",
+    'create' => ROOT_PATH . "/admin/product/add",
+    'edit' => ROOT_PATH . "/admin/product/edit",
+    'delete' => ROOT_PATH . "/admin/product/delete",
+    'list' => ROOT_PATH . "/admin/product/list",
 ];
 
-$SALES_PATH = [
-    'index' => $ROOT_PATH . "/admin/sales/",
-    'create' => $ROOT_PATH . "/admin/sales/add",
-    'edit' => $ROOT_PATH . "/admin/sales/edit",
-    'delete' => $ROOT_PATH . "/admin/sales/delete",
-    'list' => $ROOT_PATH . "/admin/sales/list",
+const SALES_PATH = [
+    'index' => ROOT_PATH . "/admin/sales/",
+    'edit' => ROOT_PATH . "/admin/sales/edit",
+    'delete' => ROOT_PATH . "/admin/sales/delete",
+    'list' => ROOT_PATH . "/admin/sales/list",
 ];
-
-$LOGOUT = $ROOT_PATH . "/auth/logout.php";
-$LOGIN = $ROOT_PATH . "/auth/login.php";
-$MAINFOODPAGE = $ROOT_PATH . "/foodhouse/foods";
-$CARTPAGE = $ROOT_PATH . "/foodhouse/cart";
-
-$ADMIN = $ROOT_PATH . "/admin";
-
-$PAGE3 = $ROOT_PATH."/page3/form/";
-$PAGE2 = $ROOT_PATH."/page2";
-$LOGO = $ROOT_PATH."/public/assets/img/Restaurant Food.png";
 
 
 // --------------------- FORM CREDENTIALS --------------------------------------

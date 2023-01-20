@@ -4,11 +4,15 @@ session_start();
 require_once '../../../app/config/env.php';
 require_once '../../../app/core/Redirect.php';
 
-redirect_not_authenticated_user($_SESSION['user'], $LOGIN);
+redirect_not_authenticated_user($_SESSION['user'], LOGIN);
 
-// redirect to the page3\form\index.php or page3\form\
-redirect_authenticated_user($_SESSION['user']['user_level'] === 0, $PAGE3);
-redirect_authenticated_user($_SESSION['user']['user_level'] === 2, $PAGE2);
+if (isset($_SESSION['user'])) {
+    if ($_SESSION['user']['user_level'] === '0') {
+        header('Location:' . PAGE3);
+    } else if ($_SESSION['user']['user_level'] === '2') {
+        header('Location:' . PAGE2);
+    }
+}
 
 
 
@@ -26,9 +30,9 @@ if (isset($_POST['submit'])) {
     $product = [
         'name' => $product_name,
         'price' => $product_price,
-        
+
     ];
-    
+
     $productController = new ProductController();
     $errors = $productController->validateProduct($product);
 
@@ -46,13 +50,12 @@ if (isset($_POST['submit'])) {
             $product['img'] = $new_img;
 
             $productInserted = $productController->insertProduct($product);
-            
-            if ($productInserted) {
-                header('Location: /foodhouse/admin/product');
-            } else {
-                header('Location: /foodhouse/admin/product/add');
-            }
 
+            if ($productInserted) {
+                header('Location: '. PRODUCT_PATH['list']);
+            } else {
+                header('Location: '. PRODUCT_PATH['create']);
+            }
         }
     }
 
@@ -126,10 +129,9 @@ if (isset($_POST['submit'])) {
     <!-- back button -->
     <div class="row">
         <div class="col-md-12">
-            <a href="/foodhouse/admin/product" class="btn btn-primary">Back</a>
+            <a href="<?= PRODUCT_PATH['list'] ?>" class="btn btn-primary">Back</a>
         </div>
     </div>
-
 
     <div class="row">
         <div class="col-md-12">
@@ -137,7 +139,6 @@ if (isset($_POST['submit'])) {
                 <div class="card-header">
                     <h4 class="card-title">Add Product</h4>
                 </div>
-
                 <div class="card-body">
                     <?php require_once '../../../app/src/includes/admin/product/form.php' ?>
                 </div>

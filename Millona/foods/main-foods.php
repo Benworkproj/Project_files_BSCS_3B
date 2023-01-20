@@ -1,13 +1,19 @@
 <?php
 
 session_start();
+require_once '../app/core/Redirect.php';
 require_once '../app/config/env.php';
 
 $title = 'Foods | Mains';
 
-redirect_not_authenticated_user($_SESSION['user'], $LOGIN);
+redirect_not_authenticated_user($_SESSION['user'], LOGIN);
 
-redirect_authenticated_user($_SESSION['user']['user_level'] === 2, $PAGE2);
+
+if (isset($_SESSION['user'])) {
+   if ($_SESSION['user']['user_level'] === '2') {
+        header('Location:' . PAGE2);
+    }
+}
 
 
 require_once '../app/config/Connection.php';

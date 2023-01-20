@@ -1,5 +1,6 @@
 <?php
 
+require_once __DIR__ .  "../../../config/env.php";
 require_once __DIR__ .  "../../../core/Model.php";
 require_once __DIR__ .  "../../../core/Redirect.php";
 
@@ -29,9 +30,18 @@ class UserController
     {
         return $user['user_level'] === '1';
     }
+
     
-    
-    // ------USER AUTHENTICATION AND AUTHORIZATION-------- //
+    private function is_accountant($user)
+    {
+        return $user['user_level'] === '0';
+    }
+
+    private function is_hr($user)
+    {
+        return $user['user_level'] === '2';
+    }
+
     public function login()
     {
         // get user from database and save to session and return if there is an error
@@ -39,25 +49,30 @@ class UserController
         if (!$user) {
             return $this->errors['db_error'] = "Database error: failed to register";
         }
-
-        // redirect to based on user role
-        // if ($this->is_admin($user)) {
-        //     header('Location: /admin/dashboard.php');
-        // } else {
-            
         // save user to session
         $this->saveUserToSession($user);
 
         if ($this->is_admin($user)) {
 
             redirect_authenticated_user($this->getUserFromSession(),
-                '/foodhouse/admin/index.php');
-
+                ADMIN);
         } 
+
+        else if ($this->is_accountant($user)) {
+
+            redirect_authenticated_user($this->getUserFromSession(),
+                PAGE3);
+        } 
+
+        else if ($this->is_hr($user)) {
+
+            redirect_authenticated_user($this->getUserFromSession(),
+                PAGE2);
+        }
 
         else{
             // redirect to authenticated user to main foods page
-            redirect_authenticated_user($this->getUserFromSession(), '/foodhouse/foods/main-foods.php');
+            redirect_authenticated_user($this->getUserFromSession(), MAINFOODPAGE);
         }
     }
 
@@ -85,7 +100,7 @@ class UserController
             // save user to session
             $this->saveUserToSession($user);
             // redirect to authenticated user to main foods page
-            redirect_authenticated_user($this->getUserFromSession(), '/foodhouse/foods/main-foods.php/');
+            redirect_authenticated_user($this->getUserFromSession(), MAINFOODPAGE);
         }
     }
 

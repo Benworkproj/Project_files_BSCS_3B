@@ -5,12 +5,15 @@ session_start();
 require_once '../app/config/env.php';
 require_once '../app/core/Redirect.php';
 
-redirect_not_authenticated_user($_SESSION['user'], $LOGIN);
+redirect_not_authenticated_user($_SESSION['user'], LOGIN);
 
-// redirect to the page3\form\index.php or page3\form\
-redirect_authenticated_user($_SESSION['user']['user_level'] === 0, $PAGE3);
-redirect_authenticated_user($_SESSION['user']['user_level'] === 2, $PAGE2);
-
+if (isset($_SESSION['user'])) {
+    if ($_SESSION['user']['user_level'] === '2') {
+        header('Location:' . PAGE2);
+    } else if ($_SESSION['user']['user_level'] === '0') {
+        header('Location:' . PAGE3);
+    }
+}
 ?>
 
 <?php require_once '../app/src/includes/admin/header.php' ?>
@@ -169,11 +172,11 @@ redirect_authenticated_user($_SESSION['user']['user_level'] === 2, $PAGE2);
                     </div>
                     <div class="card-footer">
                         <hr>
-                        <a href="/foodhouse/admin/product/index.php" class="btn rounded-5">
+                        <a href="<?= PRODUCT_PATH['list'] ?>" class="btn rounded-5">
                             <i class="fa-solid fa-share"></i>
                             View
                         </a>
-                        <a href="/foodhouse/admin/product/add/" class=" btn rounded-5">
+                        <a href="<?= PRODUCT_PATH['create'] ?>" class=" btn rounded-5">
                             <i class="fa-solid fa-share"></i>
                             Add +
                         </a>

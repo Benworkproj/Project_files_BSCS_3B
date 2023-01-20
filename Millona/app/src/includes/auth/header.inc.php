@@ -1,3 +1,4 @@
+<?php require_once __DIR__.'../../../../config/assets_path.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,9 +9,9 @@
     <title> <?= $title ?> </title>
 
     <!-- logo in the title  -->
-    <link rel="shortcut icon" href="<?= $LOGO ?>" type="image/x-icon">
+    <link rel="shortcut icon" href="<?= LOGO ?>" type="image/x-icon">
     
-    <link rel="stylesheet" href="/foodhouse/public/assets/css/signup-style.css">
+    <link rel="stylesheet" href=<?= CSS_ASSETS_PATH."/signup-style.css"?>>
 </head>
 
 <body>
