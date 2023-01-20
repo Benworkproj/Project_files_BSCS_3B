@@ -1,6 +1,6 @@
 - __USER LEVEL__
 
-- 0 __ACCOUNTANT__
+- 0 __Cashier__
 - 1 __ADMIN__
 - 2 __HR__
 - 3 __CUSTOMER__

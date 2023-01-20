@@ -7,3 +7,5 @@ const JS_ASSETS_PATH = ROOT_PATH . '/public/assets/js';
 const IMG_ASSETS_PATH = ROOT_PATH . '/public/assets/img';
 
 const UPLOADS_PATH = ROOT_PATH . '/public/uploads';
+
+const DEMO_PATH = ROOT_PATH . '/public/assets/demo';

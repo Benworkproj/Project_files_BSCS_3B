@@ -1,13 +1,13 @@
 <?php
 
 session_start();
-                                                                                require_once '../../../app/config/env.php';
+require_once '../../../app/config/env.php';
 require_once '../../../app/core/Redirect.php';
 
-                                                                                redirect_not_authenticated_user($_SESSION['user'], LOGIN);
+redirect_not_authenticated_user($_SESSION['user'], LOGIN);
 
 if (isset($_SESSION['user'])) {
-   if ($_SESSION['user']['user_level'] === '0') {
+    if ($_SESSION['user']['user_level'] === '0') {
         header('Location:' . PAGE3);
     } else if ($_SESSION['user']['user_level'] === '2') {
         header('Location:' . PAGE2);
@@ -118,6 +118,7 @@ if (isset($_POST['submit'])) {
 
 
 <?php require_once '../../../app/src/includes/admin/header.php' ?>
+<?php require_once '../../../app/src/includes/admin/panel.php' ?>
 
 <form action="" method="post" enctype="multipart/form-data">
     <h1 class="text-center">Edit Product</h1>
@@ -156,3 +157,5 @@ if (isset($_POST['submit'])) {
 
     <a href="/foodhouse/admin/product/list" class="btn btn-danger">Cancel</a>
 </form>
+
+<?php require_once '../../../app/src/includes/admin/footer.php' ?>

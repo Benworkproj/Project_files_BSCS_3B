@@ -3,8 +3,8 @@
 session_start();
 
 require_once '../../../app/config/env.php';
-require_once '../../../app/core/Redirect.php';
 require_once '../../../app/config/assets_path.php';
+require_once '../../../app/core/Redirect.php';
 
 
 redirect_not_authenticated_user($_SESSION['user'], LOGIN);
@@ -48,6 +48,8 @@ $result = $conn->query($sql);
         background-image: linear-gradient(315deg, #f5f5f5 0%, #e7e7e7 74%);
     }
 </style>
+
+<?php require_once '../../../app/src/includes/admin/panel.php' ?>
 
 <div class="container-fluid admin-background">
 
@@ -115,7 +117,4 @@ $result = $conn->query($sql);
     </div>
 </div>
 
-
-
-
-<?php require_once '../../../app/src/includes/admin/header.php' ?>
+<?php require_once '../../../app/src/includes/admin/footer.php' ?>

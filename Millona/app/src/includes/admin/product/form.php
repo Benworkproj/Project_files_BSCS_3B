@@ -23,13 +23,9 @@
      <!-- product price -->
      <div class="row">
          <div class="col-md-12">
-             <div class="form-group
-                        
-                                ">
+             <div class="form-group">
                  <label for="product_price">Product Price</label>
-                 <input type="number" name="product_price" id="product_price" class="form-control
-                                    " placeholder="Product Price" required>
-
+                 <input type="number" name="product_price" id="product_price" class="form-control" placeholder="Product Price" required>
              </div>
          </div>
      </div>
@@ -38,9 +34,8 @@
      <div class="row">
          <div class="col-md-12">
              <div class="form-group">
-                 <label for="product_img">Product Image</label>
-                 <input type="file" name="product_img" id="product_img" class="form-control
-                                    " placeholder="Product Image" required>
+                 <label for="product_img" class="">Add Image</label>
+                 <input type="file" name="product_img" id="product_img" class="form-control" placeholder="Product Image" required>
              </div>
          </div>
      </div>

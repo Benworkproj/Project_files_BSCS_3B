@@ -2,6 +2,7 @@
 
 session_start();
 require_once '../../../app/config/env.php';
+require_once '../../../app/config/assets_path.php';
 require_once '../../../app/core/Redirect.php';
 
 redirect_not_authenticated_user($_SESSION['user'], LOGIN);
@@ -123,6 +124,7 @@ if (isset($_POST['submit'])) {
     }
 </style>
 
+<?php require_once '../../../app/src/includes/admin/panel.php' ?>
 <!-- add product form -->
 <div class="container-fluid admin-background">
 
