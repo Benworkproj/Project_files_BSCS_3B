@@ -1,0 +1,58 @@
+<?php
+
+session_start();
+
+$title = 'Foods | Mains';
+
+// check if the USER NOT logged in
+if (!isset($_SESSION['user'])) {
+    header('location: /foodhouse/auth/login.php');
+}
+
+require_once '../app/config/env.php';
+require_once '../app/config/Connection.php';
+
+// get the connection
+$conn = DBConnection();
+
+// get the food items
+$sql = "SELECT * FROM main_foods_tbl";
+
+
+$stmt = $conn->query($sql);
+
+// fetch the data and return it using mysqli
+$products = $stmt->fetch_all(MYSQLI_ASSOC);
+
+// close the connection
+CloseConnection($conn);
+
+?>
+
+<?php require_once '../app/src/includes/header.inc.php' ?>
+
+<div class="container is-family-monospace">
+    <!-- NavBar -->
+    <nav id="nav" class="navbar is-transparent
+        is-spaced" role="navigation" aria-label="main
+        navigation">
+    </nav>
+
+    <?php require_once '../app/src/includes/foods/navbar.inc.php' ?>
+
+    <div class='grid-container'>
+        
+        <?php foreach ($products as $product) { ?>
+            <?php $id = $product['id'];
+            $product_name = $product['food_name'];
+            $price = $product['price'];
+            $img = $product['img'];
+            ?>
+
+            <?php require '../app/src/includes/foods/food-content.inc.php'; ?>
+        <?php } ?>
+
+    </div>
+</div>
+
+<?php require_once '../app/src/includes/footer.inc.php' ?>
