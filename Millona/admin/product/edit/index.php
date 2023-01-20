@@ -4,10 +4,10 @@ session_start();
                                                                                 require_once '../../../app/config/env.php';
 require_once '../../../app/core/Redirect.php';
 
-                                                                                redirect_not_authenticated_user($_SESSION['user'], LOGIN);
+                                                                                redirect_not_authenticated_user($_SESSION['user'], $LOGIN);
 
-                                                                                redirect_authenticated_user($_SESSION['user']['user_level'] === 0, PAGE3);
-                                                                                redirect_authenticated_user($_SESSION['user']['user_level'] === 2, PAGE2);
+                                                                                redirect_authenticated_user($_SESSION['user']['user_level'] === 0, $PAGE3);
+                                                                                redirect_authenticated_user($_SESSION['user']['user_level'] === 2, $PAGE2);
 
 // get the id from the url
 $id = $_GET['id'];

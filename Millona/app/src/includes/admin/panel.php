@@ -36,7 +36,7 @@
                       </a>
                   </li>
                   <li>
-                      <a href="<?= LOGOUT ?>" class="logout">
+                      <a href="<?= $LOGOUT  ?>" class="logout">
                           <span class="icon is-small"><i class="fa-solid fa-sign-out"></i></span>
                           <span>Logout</span>
                       </a>

@@ -8,7 +8,7 @@
     <title> <?= $title ?> </title>
 
     <!-- logo in the title  -->
-    <link rel="shortcut icon" href="<?= LOGO ?>" type="image/x-icon">
+    <link rel="shortcut icon" href="<?= $LOGO ?>" type="image/x-icon">
     <!-- Bulma CDN -->
     <!-- Bulma CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
