@@ -23,6 +23,13 @@ const PRODUCT_PATH = [
     'list' => ROOT_PATH . "/admin/product/list",
 ];
 
+const SALES_PATH = [
+    'index' => ROOT_PATH . "/admin/sales/",
+    'create' => ROOT_PATH . "/admin/sales/add",
+    'edit' => ROOT_PATH . "/admin/sales/edit",
+    'delete' => ROOT_PATH . "/admin/sales/delete",
+    'list' => ROOT_PATH . "/admin/sales/list",
+];
 
 const MAINFOODSPATH2_ALT = "/foodhouse/foods/main-foods.php";
 const CARTPAGE = "../../carts/index.php";
