@@ -1,24 +1,36 @@
 <?php
-
+// --------------------- DB CREDENTIALS --------------------------------------
 const DB_HOST = 'localhost';
 const DB_NAME = 'foodhouse';
-const DB_USER = 'root';
+const DB_USER = 'root_PATH';
 const DB_PASSWORD = '';
-const LOGOUT = "/foodhouse/auth/logout.php";
-const MAINFOODPAGE = "/foodhouse/foods/";
+
+// --------------------- PATHS --------------------------------------
+
+const ROOT_PATH = "/foodhouse";
+
+const LOGOUT = ROOT_PATH . "/auth/logout.php";
+const LOGIN = ROOT_PATH . "/auth/login.php";
+const MAINFOODPAGE = ROOT_PATH . "/foodhouse/foods/";
+
+const ADMIN = ROOT_PATH . "/admin";
+
+const PRODUCT_PATH = [
+    'index' => ROOT_PATH . "/admin/product/index.php",
+    'create' => ROOT_PATH . "/admin/product/add",
+    'edit' => ROOT_PATH . "/admin/product/edit",
+    'delete' => ROOT_PATH . "/admin/product/delete",
+    'list' => ROOT_PATH . "/admin/product/list",
+];
+
+
 const MAINFOODSPATH2_ALT = "/foodhouse/foods/main-foods.php";
 const CARTPAGE = "../../carts/index.php";
-const PAGE3 = "/foodhouse/page3/form/";
+const PAGE3 = ROOT_PATH."/page3/form/";
+const PAGE2 = ROOT_PATH."/page2";
 const LOGO = "/foodhouse/public/assets/img/Restaurant Food.png";
+
+
+// --------------------- FORM CREDENTIALS --------------------------------------
 const USERNAME = ['username', 'Username'];
 const PASSWORD = ['password', 'Password'];
-
-const MAINFOODS = [
-
-    ['id' => 1, 'food_name' => 'Main Dish 1', 'price' => 300, 'img' => '../../public/assets/img/product1.jpg'],
-    ['id' => 2, 'food_name' => 'Main Dish 2', 'price' => 450, 'img' => '../../public/assets/img/product2.jpg'],
-    ['id' => 3, 'food_name' => 'Main Dish 3', 'price' => 150, 'img' => '../../public/assets/img/product3.jpg'],
-    ['id' => 4, 'food_name' => 'Main Dish 4', 'price' => 200, 'img' => '../../public/assets/img/product4.jpg'],
-
-
-];

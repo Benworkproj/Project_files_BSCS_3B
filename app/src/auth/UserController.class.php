@@ -220,6 +220,15 @@ class UserController
         return false;
     }
 
+    // get user from session and its role
+    public function getUserRoleFromSession()
+    {
+        if (isset($_SESSION['user'])) {
+            return $_SESSION['user']['user_level'];
+        }
+        return false;
+    }
+
 
 
 

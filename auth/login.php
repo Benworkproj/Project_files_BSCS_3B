@@ -4,11 +4,11 @@ session_start();
 
 require_once '../app/config/env.php';
 require_once '../app/src/auth/UserController.class.php';
+require_once '../app/core/Redirect.php';
 
-// check if the user has already logged in
-if (isset($_SESSION['user'])) {
-    header('location: /foods/main-foods.php');
-}
+redirect_authenticated_user($_SESSION['user']['user_level'] === 0, PAGE3);
+redirect_authenticated_user($_SESSION['user']['user_level'] === 1, ADMIN);
+redirect_authenticated_user($_SESSION['user']['user_level'] === 2, PAGE2);
 
 $title = 'Auth | Login Account'; 
 

@@ -1,15 +1,15 @@
 <?php
 
 session_start();
+require_once '../app/config/env.php';
 
 $title = 'Foods | Mains';
 
-// check if the USER NOT logged in
-if (!isset($_SESSION['user'])) {
-    header('location: /foodhouse/auth/login.php');
-}
+redirect_not_authenticated_user($_SESSION['user'], LOGIN);
 
-require_once '../app/config/env.php';
+redirect_authenticated_user($_SESSION['user']['user_level'] === 2, PAGE2);
+
+
 require_once '../app/config/Connection.php';
 
 // get the connection

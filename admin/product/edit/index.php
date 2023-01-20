@@ -1,10 +1,13 @@
 <?php
 
 session_start();
-
+                                                                                require_once '../../../app/config/env.php';
 require_once '../../../app/core/Redirect.php';
 
-redirect_not_authenticated_user($_SESSION['user'], '/foodhouse/auth/login.php');
+                                                                                redirect_not_authenticated_user($_SESSION['user'], LOGIN);
+
+                                                                                redirect_authenticated_user($_SESSION['user']['user_level'] === 0, PAGE3);
+                                                                                redirect_authenticated_user($_SESSION['user']['user_level'] === 2, PAGE2);
 
 // get the id from the url
 $id = $_GET['id'];
@@ -14,7 +17,6 @@ if (!is_numeric($id)) {
     header('location: /foodhouse/admin/product/list');
 }
 
-require_once '../../../app/config/env.php';
 require_once '../../../app/config/Connection.php';
 
 // get the connection

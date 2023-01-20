@@ -34,6 +34,13 @@ class SalesController
     public function addSales()
     {
         $data = $this->sanitizeSalesData();
+
+        /* 
+        the reason why we can access the data is because we are returning the data from the sanitizeSalesData() method.... ALWAYS REMBERED THIS..
+
+        If a method have a "return", that return will be the value of the method and the basis of the method.
+        */
+    
         $addSales = $this->model->addSales($data);
 
         if ($addSales) {
