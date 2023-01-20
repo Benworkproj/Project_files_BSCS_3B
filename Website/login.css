@@ -1,0 +1,86 @@
+body {
+    background-image: url("https://media.istockphoto.com/vectors/bear-seamless-pattern-polar-bear-boba-milk-tea-vector-bubble-milk-tea-vector-id1218097730?k=20&m=1218097730&s=170667a&w=0&h=3d3ie00t0MawT91U0hl2L0r57CdmlCPTLXbCmaR6MVs=");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+*{
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+form {
+    width: 500px;
+    border: 2px solid; #ccc;
+    padding: 30px;
+    background: tan;
+    border-radius: 15px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+input {
+    display: block;
+    border: 2px solid #ccc;
+    width: 95%;
+    padding: 10px;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+label {
+    color: black;
+    font-size: 18px;
+    padding: 10px;
+}
+
+button {
+    float: right;
+    background: #555;
+    padding: 15px 20px;
+    color: #fff;
+    border-radius: 5px;
+    margin-right: 10px;
+    border: none;
+}
+button:hover{
+    opacity: .7;
+}
+.error {
+   background: #F2DEDE;
+   color: #A94442;
+   padding: 10px;
+   width: 95%;
+   border-radius: 5px;
+   margin: 20px auto;
+}
+
+h1 {
+    text-align: center;
+    color: #fff;
+}
+
+a {
+    float: right;
+    background: #555;
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 5px;
+    margin-right: 10px;
+    border: none;
+    text-decoration: none;
+}
+a:hover{
+    opacity: .7;
+}
+
+select{
+    color: black;
+    font-size: 15px;
+    padding: 10px;
+}

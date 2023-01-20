@@ -1,0 +1,73 @@
+body {
+    background-color: white
+}
+.left {
+    float: left;
+}
+label {
+    width: 200px;
+    display: inline-block;
+    font-family: Arial;
+}
+input {
+    width: 200px;
+    box-sizing: border-box;
+}
+.pic_employee {
+    position: absolute;
+    left: 450px;
+    top: 50px;
+}
+.col_nd{
+    position: absolute;
+    left: 450px;
+    top: 71px;
+}
+img {
+    height: 150px;
+    position: absolute;
+    top: -20px;
+    right: -805px;
+}
+.pic{
+    position: absolute;
+    top: 140px;
+    left: 640px;
+}
+.cphoto{
+    position: absolute;
+    top: 30px;
+    right: -30px;
+}
+.infos2{
+    position: absolute;
+    top: 270px;
+    right: 30px;
+}
+p{
+    font-size: large;
+    font-family: Verdana;
+}
+.button{
+        background-color: black; 
+        color: yellow;
+        text-align: center;
+        font-size: 16px;
+        margin: 4px 2px;
+        padding: 10px;
+        border-radius: 0%;
+        width: 200px;
+        box-sizing: border-box;
+}
+.button1 {padding: 10px;}
+.button2 {padding: 10px;}
+.button3 {padding: 10px;}
+.button4 {padding: 10px;}
+.button5 {padding: 10px;}
+.button6 {padding: 10px;}
+
+.buttons{
+        position: absolute;
+        top: 300px;
+        right: 70px;
+}
