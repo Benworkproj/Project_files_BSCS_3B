@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '../../config/env.php';
 require_once __DIR__ . '../../config/Connection.php';
-
+require_once __DIR__ . '../../config/DBCmd.php';
 
 function insertUser($username, $user_password)
 {
@@ -40,16 +40,18 @@ function getUser($username)
 class BaseProductModel{
 
     private $conn;
+    private $cmd;
 
     public function __construct()
     {
         $this->conn = DBConnection();
+        $this->cmd = new DBCmd();
     }
 
 
     public function getAllProducts()
     {
-        $sql = "SELECT * FROM main_foods_tbl";
+        $sql = $this->cmd->selectAllCmd('main_foods_tbl');
         $stmt = $this->conn->query($sql);
 
         $main_foods = $stmt->fetch_all(MYSQLI_ASSOC);
@@ -59,7 +61,8 @@ class BaseProductModel{
 
     public function getProduct($id)
     {
-        $sql = "SELECT * FROM main_foods_tbl WHERE id = '$id'";
+        
+        $sql = $this->cmd->selectCmd('main_foods_tbl', $id);
         $stmt = $this->conn->query($sql);
 
         $product = $stmt->fetch_assoc();
@@ -69,7 +72,12 @@ class BaseProductModel{
 
     public function addProduct($product)
     {
-        $sql = "INSERT INTO main_foods_tbl (food_name, price, img) VALUES ('$product->name', '$product->price', '$product->image')";
+
+        $productName = $product['name'];
+        $productPrice = $product['price'];
+        $productImage = $product['img'];
+
+        $sql = "INSERT INTO main_foods_tbl (food_name, price, img) VALUES ('$productName', '$productPrice', '$productImage')";
 
         $stmt = $this->conn->query($sql);
 

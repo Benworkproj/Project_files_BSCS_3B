@@ -1,65 +1,40 @@
 <?php
+require_once __DIR__ . '../../../core/Model.php';
 
-require_once __DIR__ . '/ProductModel.class.php';
+class ProductController 
+{
 
-// class MainFoodsController extends ProductModel2
-// {
-//     protected function getMainFoods()
-//     {
-//         return parent::getAllProducts();
-//     }
+    private $model;
+    private $error = [];
 
-// }
+    public function __construct()
+    {
+        $this->model = new BaseProductModel();
+    }
 
-// class ProductController {
+    public function validateProduct($product){
 
 
-//     public function index()
-//     {
-//         $products = $this->getAllProducts();
-//         require_once 'app/src/products/ProductView.php';
-//     }
+        if (empty($product['name'])) {
+            $this->error['error_name'] = 'Product name is required';
+        }
 
-    // public function show($id)
-    // {
-    //     $product = $this->getProduct($id);
-    //     require_once 'app/src/products/views/show.php';
-    // }
+        if (empty($product['price'])) {
+            $this->error['error_name'] = 'Product price is required';
+        }
 
-    // public function create()
-    // {
-    //     require_once 'app/src/products/views/create.php';
-    // }
+        return $this->error;
+    }
 
-    // public function store()
-    // {
-    //     $product = new Product();
-    //     $product->food_name = $_POST['food_name'];
-    //     $product->price = $_POST['price'];
-    //     $product->img = $_POST['img'];
-    //     $this->addProduct($product);
-    //     header('Location: /products');
-    // }
+    public function insertProduct($product){
+        $inserted = $this->model->addProduct($product);
 
-    // public function edit($id)
-    // {
-    //     $product = $this->getProduct($id);
-    //     require_once 'app/src/products/views/edit.php';
-    // }
+        if ($inserted) {
+            return true;
+        } else {
+            return false;
+        }
 
-    // public function update($id)
-    // {
-    //     $product = new Product();
-    //     $product->id = $id;
-    //     $product->food_name = $_POST['food_name'];
-    //     $product->price = $_POST['price'];
-    //     $product->img = $_POST['img'];
-    //     $this->updateProduct($product);
-    //     header('Location: /products');
-    // }
+    }
 
-    // public function destroy($id)
-    // {
-    //     $this->deleteProduct($id);
-    //     header('Location: /products');
-    // }
+}

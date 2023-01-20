@@ -1,12 +1,12 @@
  <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data">
 
-     <?php
-        if (isset($errors)) {
-            foreach ($errors as $error) {
-                echo '<div class="alert alert-danger" role="alert">' . $error . '</div>';
-            }
-        }
-        ?>
+     <?php if (isset($errors['error_name'])) : ?>
+
+         <div class="error">
+             <?= $errors['error_name'] ?>
+         </div>
+
+     <?php endif ?>
 
      <div class="row">
          <div class="col-md-12">

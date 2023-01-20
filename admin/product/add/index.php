@@ -10,6 +10,9 @@ redirect_not_authenticated_user($_SESSION['user'], '/foodhouse/auth/login.php');
 require_once '../../../app/config/env.php';
 require_once '../../../app/config/Connection.php';
 
+require_once '../../../app/libs/Image.php';
+require_once '../../../app/src/products/ProductsController.class.php';
+
 $title = "Add Product";
 
 // if form is submitted
@@ -18,65 +21,91 @@ if (isset($_POST['submit'])) {
     $product_name = $_POST['product_name'];
     $product_price = $_POST['product_price'];
     $product_img = $_FILES['product_img'];
+    $product = [
+        'name' => $product_name,
+        'price' => $product_price,
+        
+    ];
 
-    $img_name = $_FILES['product_img']['name'];
-    $img_tmp = $_FILES['product_img']['tmp_name'];
-    $img_size = $_FILES['product_img']['size'];
-    $img_error = $_FILES['product_img']['error'];
-    $img_type = $_FILES['product_img']['type'];
-
-    // validate form data
     $errors = [];
+    
+    $productController = new ProductController();
+    $errors = $productController->validateProduct($product);
 
-    // if (empty($product_name)) {
-    //     $errors['error_name'] = 'Product name is required';
-    // }
+    if (empty($errors)) {
 
-    // if (empty($product_price)) {
-    //     $errors['error_name'] = 'Product price is required';
-    // }
+        $image = new ImageUpload($product_img);
 
-    // if (empty($product_img)) {
-    //     $errors['error_name'] = 'Product image is required';
-    // }
+        $errors = $image->validateImage();
 
-    $file_ext = explode('.', $img_name);
-    $actualExt = strtolower(end($file_ext));
+        if (empty($errors)) {
+            // if there is no errer
+            $fileDestination = '../../../public/uploads/';
+            $new_img = $image->uploadImage($fileDestination);
 
-    // allowed file ext
-    $allowed_ext = array('jpg', 'jpeg', 'png');
+            $product['img'] = $new_img;
 
-    if (in_array($actualExt, $allowed_ext)) {
-        if ($img_error === 0) {
-            if ($img_size < 1000000) {
-
-                $new_img = time() . '_' . $actualExt;
-                $fileDestination = '../../../public/uploads/' . $new_img;
-                move_uploaded_file($img_tmp, $fileDestination);
-
-                $conn = DBConnection();
-
-                $sql = "INSERT INTO main_foods_tbl (food_name, price, img) VALUES ('$product_name', '$product_price', '$new_img')";
-
-                $result = $conn->query($sql);
-
-                if ($result) {
-                    // $_SESSION['success'] = 'Product added successfully';
-                    header('location: /foodhouse/admin/product');
-                } else {
-                    // $_SESSION['error'] = 'Something went wrong';
-                    echo 'Something went wrong';
-                    header('location: /foodhouse/admin/product/add');
-                }
+            $productInserted = $productController->insertProduct($product);
+            
+            if ($productInserted) {
+                header('Location: /foodhouse/admin/product');
             } else {
-                $errors['error_name'] = 'File size too large';
+                header('Location: /foodhouse/admin/product/add');
             }
+
         } else {
-            $errors['error_name'] = 'There was an error uploading your file';
+            // if there is error
+            $error = $errors;
         }
-    } else {
-        $errors['error_name'] = 'You cannot upload files of this type';
+
     }
+
+    // $img_name = $_FILES['product_img']['name'];
+    // $img_tmp = $_FILES['product_img']['tmp_name'];
+    // $img_size = $_FILES['product_img']['size'];
+    // $img_error = $_FILES['product_img']['error'];
+    // $img_type = $_FILES['product_img']['type'];
+
+    // // validate form data
+    // $errors = [];
+
+    // $file_ext = explode('.', $img_name);
+    // $actualExt = strtolower(end($file_ext));
+
+    // // allowed file ext
+    // $allowed_ext = array('jpg', 'jpeg', 'png');
+
+    // if (in_array($actualExt, $allowed_ext)) {
+    //     if ($img_error === 0) {
+    //         if ($img_size < 1000000) {
+
+    //             $new_img = time() . '_' . $actualExt;
+    //             $fileDestination = '../../../public/uploads/' . $new_img;
+    //             move_uploaded_file($img_tmp, $fileDestination);
+
+    //             $conn = DBConnection();
+
+    //             $sql = "INSERT INTO main_foods_tbl (food_name, price, img) VALUES ('$product_name', '$product_price', '$new_img')";
+
+    //             $result = $conn->query($sql);
+
+    //             if ($result) {
+    //                 // $_SESSION['success'] = 'Product added successfully';
+    //                 header('location: /foodhouse/admin/product');
+    //             } else {
+    //                 // $_SESSION['error'] = 'Something went wrong';
+    //                 echo 'Something went wrong';
+    //                 header('location: /foodhouse/admin/product/add');
+    //             }
+    //         } else {
+    //             $errors['error_name'] = 'File size too large';
+    //         }
+    //     } else {
+    //         $errors['error_name'] = 'There was an error uploading your file';
+    //     }
+    // } else {
+    //     $errors['error_name'] = 'You cannot upload files of this type';
+    // }
 }
 ?>
 
