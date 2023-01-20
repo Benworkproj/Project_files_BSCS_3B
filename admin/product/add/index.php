@@ -26,8 +26,6 @@ if (isset($_POST['submit'])) {
         'price' => $product_price,
         
     ];
-
-    $errors = [];
     
     $productController = new ProductController();
     $errors = $productController->validateProduct($product);
@@ -53,11 +51,7 @@ if (isset($_POST['submit'])) {
                 header('Location: /foodhouse/admin/product/add');
             }
 
-        } else {
-            // if there is error
-            $error = $errors;
         }
-
     }
 
     // $img_name = $_FILES['product_img']['name'];

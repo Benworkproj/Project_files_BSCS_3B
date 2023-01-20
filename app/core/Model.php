@@ -59,10 +59,11 @@ class BaseProductModel{
         return $main_foods;
     }
 
-    public function getProduct($id)
+    public function getProduct($key, $value)
     {
         
-        $sql = $this->cmd->selectCmd('main_foods_tbl', $id);
+        $sql = $this->cmd->selectCmd('main_foods_tbl', $key, $value);
+
         $stmt = $this->conn->query($sql);
 
         $product = $stmt->fetch_assoc();
@@ -90,9 +91,15 @@ class BaseProductModel{
 
     public function updateProduct($product)
     {
-        $sql = "UPDATE main_foods_tbl SET food_name = '$product->name',  price = '$product->price', img = '$product->image' WHERE id = '$product->id'";
-        $stmt = $this->conn->query($sql);
+        
+        $id = $product['id'];
+        $productName = $product['name'];
+        $productPrice = $product['price'];
+        $productImage = $product['img'];
 
+        $sql = "UPDATE main_foods_tbl SET food_name = '$productName', price = '$productPrice', img = '$productImage' WHERE id = '$id'";
+
+        $stmt = $this->conn->query($sql);
         if ($stmt) {
             return true;
         } else {

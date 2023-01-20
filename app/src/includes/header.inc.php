@@ -29,7 +29,6 @@
         body {
             /* add a cool and attractive gradient background color */
             background: linear-gradient(45deg, #f5f7fa, #c3cfe2);
-
         }
     </style>
 </head>

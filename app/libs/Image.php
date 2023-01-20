@@ -13,6 +13,7 @@ class ImageUpload{
     private $image_error;
     private $error = [];
     private $allowed_ext = array('jpg', 'jpeg', 'png');
+    private $model;
 
     public function __construct($image)
     {
@@ -22,6 +23,9 @@ class ImageUpload{
         $this->image_tmp_name = $this->image['tmp_name'];
         $this->image_size = $this->image['size'];
         $this->image_error = $this->image['error'];
+
+        $this->model = new BaseProductModel();
+
     }
 
     public function expolodeImageName(){
@@ -52,18 +56,39 @@ class ImageUpload{
             $this->error['error_name'] = 'Image is required';
         }
 
+        if ($this->isProductImageExist($this->image_name)) {
+            $this->error['error_name'] = 'Image already exist';
+        }
+
         return $this->error;
 
     }
 
 
     public function uploadImage($path){
-        $actualExt = $this->expolodeImageName();
-        $new_img = time() . '_' . $actualExt;
+        // $actualExt = $this->expolodeImageName();
+        // $new_img = time() . '_' . $actualExt;
+
+        $new_img = $this->image_name;
+
         $fileDestination = $path . $new_img;
         move_uploaded_file($this->image_tmp_name, $fileDestination);
 
         return $new_img;
 
     }
+
+
+    private function isProductImageExist($img)
+    {
+        $product = $this->model->getProduct('img', $img);
+
+        // if product exist return true
+        if ($product) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

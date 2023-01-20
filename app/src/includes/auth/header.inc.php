@@ -10,7 +10,7 @@
     <!-- logo in the title  -->
     <link rel="shortcut icon" href="<?= LOGO ?>" type="image/x-icon">
     
-    <link rel="stylesheet" href="../../../../public/assets/css/signup-style.css">
+    <link rel="stylesheet" href="/foodhouse/public/assets/css/signup-style.css">
 </head>
 
 <body>

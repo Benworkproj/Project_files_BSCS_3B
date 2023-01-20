@@ -7,9 +7,9 @@ class DBCmd
         return "SELECT * FROM $table";
     }
 
-    public static function selectCmd($table, $id)
+    public static function selectCmd($table, $key, $value) 
     {
-        return "SELECT * FROM $table WHERE id = $id";
+        return "SELECT * FROM $table WHERE $key = '$value'";
     }
 
     public static function insertCmd($table, $data)

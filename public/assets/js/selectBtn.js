@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  const page3Form = "http://localhost/page3/form/index.php";
   $(".selectBtn").on({
     click: function (e) {
       e.preventDefault();
@@ -15,7 +14,7 @@ $(document).ready(function () {
         sessionStorage.setItem("price", price);
         sessionStorage.setItem("foodName", foodNameTrim);
 
-        location.href = page3Form;
+        location.href = "/foodhouse/page3/form";
       }, 1000);
     },
   });

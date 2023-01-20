@@ -23,6 +23,10 @@ class ProductController
             $this->error['error_name'] = 'Product price is required';
         }
 
+        if ($this->isProductNameExist($product)) {
+            $this->error['error_name'] = 'Product already exist';
+        }
+
         return $this->error;
     }
 
@@ -36,5 +40,18 @@ class ProductController
         }
 
     }
+
+    private function isProductNameExist($product){
+        $product = $this->model->getProduct('food_name', $product['name']);
+
+        // if product exist return true
+        if ($product) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 
 }

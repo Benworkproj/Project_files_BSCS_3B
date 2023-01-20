@@ -7,7 +7,7 @@ require_once '../app/src/auth/UserController.class.php';
 
 // check if the user has already logged in
 if (isset($_SESSION['user'])) {
-    header('location: /foodhouse/foods/main-foods.php');
+    header('location: /foods/main-foods.php');
 }
 
 $title = 'Auth | Login Account'; 
@@ -30,6 +30,7 @@ if (isset($_POST['submit'])) {
 ?>
 
 <?php ?>
+
 
 <?php require_once '../app/src/includes/auth/header.inc.php' ?>
 
