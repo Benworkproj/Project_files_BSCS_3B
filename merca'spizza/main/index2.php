@@ -132,7 +132,7 @@ if($_SESSION['usertype']=="cashier2" || $_SESSION['usertype']=="superadmin"){
                   <h2>WELCOME CASHIER!</h2>
                   <br>
                   <h4>click the button below to access POS.</h4>
-                  <div href="" id="btn1" class="btn"><button>MPOS2 ver 1.0</button></div>
+                  <a href="" id="btn1" class="btn"><button>MPOS2 ver 1.0</button></a>
 
                   <script>
                   let other = null; //will be our window reference
@@ -149,28 +149,7 @@ if($_SESSION['usertype']=="cashier2" || $_SESSION['usertype']=="superadmin"){
           </div>
           <!-- New main content under maintenance page -->
 
-<!-- footer section-->
-<footer id="footer">
-    <div class="container">
-        <div class="row d-flex align-items-center">
-            <div class="col-lg-6 text-lg-left text-center">
-                <div class="copyright">
-                    &copy; Copyright <strong> Merca's Pizza</strong>. All Rights Reserved
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
-                    <a href="#" class="scrollto">Home</a>
-                    <a href="#" class="scrollto">Pizza</a>
-                    <a href="#" class="scrollto">Deliver</a>
-                    <a href="#" class="scrollto">About Us</a>
-                    <a href="#" class="scrollto">Contact Us</a>
-                </nav>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- footer section-->
+
 
 </body>
 </html>
