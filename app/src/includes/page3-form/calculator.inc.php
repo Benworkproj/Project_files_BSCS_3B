@@ -7,7 +7,7 @@
         <span class="icon is-left">
             <i class="fa-solidfa-coins"></i>
         </span>
-        
+
     </p>
     <p id="cash-input-help-text" class="help is-danger" style="display:none">Cash is lower than the payable amount</p>
     <p id="cashrequired-input-help-text" class="help is-danger" style="display:none">This is required</p>
@@ -76,7 +76,7 @@
             </button>
         </p>
         <p class="control">
-            <button type="submit" name="submit" class="button is-primary
+            <button type="submit" name="submit" class=" button is-primary
                     is-normal is-responsive">
                 <span class="icon">
                     <i class="fa-solid fa-plus"></i>

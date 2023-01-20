@@ -3,6 +3,7 @@
 session_start();
 
 require_once '../../app/config/env.php';
+require_once '../../app/src/sales/SalesController.class.php';
 
 $title = 'Page 3 Form';
 
@@ -28,32 +29,35 @@ if (isset($_POST['submit'])) {
 
         changeValue
     */
+    $data = [
+        'foodName' => $_POST['foodName'],
+        'quantityOfOrder' => $_POST['quantityOfOrder'],
+        'foodPrice' => $_POST['foodPrice'],
 
-    $foodName = $_POST['foodName'];
-    $quantityOfOrder = $_POST['quantityOfOrder'];
-    $foodPrice = $_POST['foodPrice'];
+        'discountAmount' => $_POST['discountAmount'],
+        'discountedAmount' => $_POST['discountedAmount'],
 
-    $discountAmount = $_POST['discountAmount'];
-    $discountedAmount = $_POST['discountedAmount'];
+        'totalQuantity' => $_POST['totalQuantity'],
+        'totalDiscountedGiven' => $_POST['totalDiscountedGiven'],
+        'totalDiscountedAmount' => $_POST['totalDiscountedAmount'],
 
-    $totalQuantity = $_POST['totalQuantity'];
-    $totalDiscountedGiven = $_POST['totalDiscountedGiven'];
-    $totalDiscountedAmount = $_POST['totalDiscountedAmount'];
+        'cashValue' => $_POST['cashValue'],
+        'changeValue' => $_POST['changeValue'],
+    ];
 
-    $cashValue = $_POST['cashValue'];
-    $changeValue = $_POST['changeValue'];
 
-    // echo all the values
-    echo $foodName . '<br>';
-    echo $quantityOfOrder . '<br>';
-    echo $foodPrice . '<br>';
-    echo $discountAmount . '<br>';
-    echo $discountedAmount . '<br>';
-    echo $totalQuantity . '<br>';
-    echo $totalDiscountedGiven . '<br>';
-    echo $totalDiscountedAmount . '<br>';
-    echo $cashValue . '<br>';
-    echo $changeValue . '<br>';
+    $salesController = new SalesController($data);
+
+    $error = $salesController->validateSalesData();
+
+    if (empty($error)) {
+        $salesController->addSales();
+
+        // empty the foodname value and food price
+        $_POST['foodName'] = '';
+        $_POST['foodPrice'] = '';
+    }
+
 }
 
 ?>
@@ -67,10 +71,17 @@ if (isset($_POST['submit'])) {
     <!-- header -->
     <?php require_once '../../app/src/includes/page3-form/form-header.inc.php' ?>
 
+    <?php if (isset($error['error_name'])) : ?>
+        <div class="notification is-danger">
+            <button class="delete"></button>
+            <?= $error['error_name']; ?>
+        </div>
+    <?php endif; ?>
+
     <div class="columns">
         <div class="column">
             <div class="content ">
-                <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]); ?>"  id="form" class="mr-3">
+                <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]); ?>"  id="form" class="mr-3" method='POST'>
 
                     <!-- form body -->
                     <?php require_once '../../app/src/includes/page3-form/form-body.inc.php' ?>

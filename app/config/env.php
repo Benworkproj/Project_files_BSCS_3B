@@ -9,7 +9,7 @@ const MAINFOODPAGE = "/foodhouse/foods/";
 const MAINFOODSPATH2_ALT = "/foodhouse/foods/main-foods.php";
 const CARTPAGE = "../../carts/index.php";
 const PAGE3 = "/foodhouse/page3/form/";
-const LOGO = "../../public/assets/img/Restaurant Food.png";
+const LOGO = "/foodhouse/public/assets/img/Restaurant Food.png";
 const USERNAME = ['username', 'Username'];
 const PASSWORD = ['password', 'Password'];
 

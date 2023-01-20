@@ -10,6 +10,7 @@
     </title>
 
     <link rel="shortcut icon" href="<?= LOGO ?>" type="image/x-icon">
+    
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />

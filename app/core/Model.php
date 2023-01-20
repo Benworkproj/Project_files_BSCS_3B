@@ -48,6 +48,10 @@ class BaseProductModel{
         $this->cmd = new DBCmd();
     }
 
+    public function getConnection()
+    {
+        return $this->conn;
+    }
 
     public function getAllProducts()
     {
@@ -120,87 +124,66 @@ class BaseProductModel{
     }
 }
 
+class BaseSales{
 
 
-    // protected function getUser($username)
-    // {
-    //     $statement = $this->pdo->prepare(
-    //         'SELECT * FROM accounts WHERE username = :username'
-    //     );
-    //     $statement->execute(
-    //         [
-    //             'username' => $username
-    //         ]
-    //     );
+    private $conn;
+    private $cmd;
+    private $productmodel;
 
-    //     return $statement->fetch(PDO::FETCH_OBJ);
-    // }
+    public function __construct()
+    {
+        $this->productmodel = new BaseProductModel();
+        $this->cmd = new DBCmd();
+        $this->conn = $this->productmodel->getConnection();
+    }
 
-    // protected function getPassword($user_password)
-    // {
-    //     $statement = $this->pdo->prepare(
-    //         'SELECT * FROM accounts WHERE user_password = :user_password'
-    //     );
-    //     $statement->execute(
-    //         [
-    //             'user_password' => $user_password
-    //         ]
-    //     );
+    // get the connection
+    public function getConnection()
+    {
+        return $this->conn;
+    }
 
-    //     return $statement->fetch(PDO::FETCH_OBJ);
-    // }
+    public function addSales($data)
+    {
 
-    // // get and check if the user is an admin or regular user
-    // protected function getUserRoleLevel($username)
-    // {
-    //     $statement = $this->pdo->prepare(
-    //         'SELECT user_level FROM accounts WHERE username = :username'
-    //     );
+        $item_name = $data['foodName'];
+        $item_price = $data['foodPrice'];
+        $quantity = $data['quantityOfOrder'];
+        $discount_amount = $data['discountAmount'];
+        $discounted_amount = $data['discountedAmount'];
+        $cash_value = $data['cashValue'];
+        $change_value = $data['changeValue'];
+        
+        
+        $sql = "INSERT INTO 
+        sales (
+            item_name, 
+            item_price,
+            quantity,
+            discount_amount,
+            discounted_amount,
+            cash_value,
+            change_value
+        ) 
+            
+        VALUES (
+            '$item_name',
+            '$item_price',
+            '$quantity',
+            '$discount_amount',
+            '$discounted_amount',
+            '$cash_value',
+            '$change_value'
+        )";
 
-    //     $statement->execute(
-    //         [
-    //             'username' => $username
-    //         ]
-    //     );
+        $stmt = $this->conn->query($sql);
 
-    //     return $statement->fetch(PDO::FETCH_OBJ);
-    // }
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-    // protected function errors_message($message, $type)
-    // {
-    //     return "<div class='alert alert-{$type}'>{$message}</div>";
-    // }
-// abstract class CoreProductModel
-// {
-//     protected $food = [];
-
-//     protected function __construct($food)
-//     {
-//         $this->food = $food;
-//     }
-
-//     protected function getAllProducts()
-//     {
-//         return $this->food;
-//     }
-
-//     protected function getProduct($id)
-//     {
-//         return $this->food[$id];
-//     }
-
-//     protected function addProduct($product)
-//     {
-//         $this->food[] = $product;
-//     }
-
-//     protected function updateProduct($product)
-//     {
-//         $this->food[$product->id] = $product;
-//     }
-
-//     protected function deleteProduct($id)
-//     {
-//         unset($this->food[$id]);
-//     }
-// }
+}

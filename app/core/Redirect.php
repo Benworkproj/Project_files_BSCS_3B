@@ -2,7 +2,7 @@
 
 function redirect_authenticated_user ($user, $path)
 {
-    if (isset($user)) {
+    if (isset($user) ) {
         header('Location: ' . $path);
     }
 }
