@@ -5,12 +5,14 @@ session_start();
 require_once '../../app/config/env.php';
 require_once '../../app/src/sales/SalesController.class.php';
 
+redirect_not_authenticated_user($_SESSION['user'], LOGIN);
+
+// redirect_authenticated_user($_SESSION['user']['user_level'] === 3, MAINFOODPAGE);
+
+redirect_authenticated_user($_SESSION['user']['user_level'] === 2, PAGE2);
+
 $title = 'Page 3 Form';
 
-// check if the USER NOT logged in
-if (!isset($_SESSION['user'])) {
-    header('location: /foodhouse/auth/login.php');
-}
 
 if (isset($_POST['submit'])) {
 
