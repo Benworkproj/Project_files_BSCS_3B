@@ -3,24 +3,19 @@
 session_start();
 
 require_once '../app/config/env.php';
+require_once '../app/config/assets_path.php';
 require_once '../app/src/auth/UserController.class.php';
 
-if (isset($_SESSION['user'])) {
-    if ($_SESSION['user']['user_level'] === '1') {
-        header('Location:' . ADMIN);
-    } else if ($_SESSION['user']['user_level'] === '0') {
-        header('Location:' . PAGE3);
-    } else if ($_SESSION['user']['user_level'] === '2') {
-        header('Location:' . PAGE2);
-    }
-}
-
+redirect_auth_user_level($_SESSION['user']['user_level'], 0, PAGE3);
+redirect_auth_user_level($_SESSION['user']['user_level'], 1, ADMIN);
+redirect_auth_user_level($_SESSION['user']['user_level'], 2, PAGE2);
+redirect_auth_user_level($_SESSION['user']['user_level'], 3, MAINFOODPAGE_ALT);
 
 $title = 'Auth | Register Account';
 
 // check if the user has already logged in
 if (isset($_SESSION['user'])) {
-    header('location: /foodhouse/foods/main-foods.php');
+    header('location: '. MAINFOODPAGE);
 }
 
 // handle form submission

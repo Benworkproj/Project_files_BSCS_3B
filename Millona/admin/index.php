@@ -3,17 +3,13 @@
 session_start();
 
 require_once '../app/config/env.php';
+require_once '../app/config/assets_path.php';
 require_once '../app/core/Redirect.php';
 
 redirect_not_authenticated_user($_SESSION['user'], LOGIN);
 
-if (isset($_SESSION['user'])) {
-    if ($_SESSION['user']['user_level'] === '2') {
-        header('Location:' . PAGE2);
-    } else if ($_SESSION['user']['user_level'] === '0') {
-        header('Location:' . PAGE3);
-    }
-}
+redirect_not_admin();
+
 
 $title = 'Dashboard';
 

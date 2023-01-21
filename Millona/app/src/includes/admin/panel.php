@@ -37,7 +37,7 @@
                       </a>
                   </li>
                   <li class="active text-danger">
-                      <a href="">
+                      <a href="<?= SALES_PATH['list'] ?>">
                           <i class="fa-solid fa-chart-line"></i>
                           <p>Sales</p>
                       </a>
@@ -80,7 +80,7 @@
                           <li class="nav-item">
                               <a class="nav-link btn-rotate">
 
-                                  <img src="../public/assets/img/default-avatar.png" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 30px; height: 30px;">
+                                  <img src="<?= IMG_ASSETS_PATH ?>/default-avatar.png" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 30px; height: 30px;">
                               </a>
                           </li>
                       </ul>
@@ -139,7 +139,9 @@
                           </div>
                           <div class="card-footer ">
                               <hr>
-                              <a class="btn rounded-5">
+
+                              <!-- sales path -->
+                              <a href="<?= SALES_PATH['list'] ?>" class="btn rounded-5">
                                   <i class="fa-solid fa-share"></i>
                                   View
                               </a>
@@ -164,11 +166,16 @@
                                   </div>
                               </div>
                           </div>
-                          <div class="card-footer ">
+                          <div class="card-footer row">
                               <hr>
-                              <a class="btn rounded-5">
+                              <!-- employee path -->
+                              <a href="<?= EMPLOYEE_PATH['list'] ?>" class="btn rounded-5 col">
                                   <i class="fa-solid fa-share"></i>
                                   View
+                              </a>
+                              <a href="<?= PAGE2 ?>" class=" btn rounded-5 col">
+                                  <i class="fa-solid fa-share small"></i>
+                                  Add +
                               </a>
                           </div>
                       </div>
@@ -191,14 +198,16 @@
                                   </div>
                               </div>
                           </div>
-                          <div class="card-footer">
+                          <div class="card-footer row">
                               <hr>
-                              <a href="<?= PRODUCT_PATH['list'] ?>" class="btn rounded-5">
+
+                              <!-- Product path -->
+                              <a href="<?= PRODUCT_PATH['list'] ?>" class="btn rounded-5 col">
                                   <i class="fa-solid fa-share"></i>
                                   View
                               </a>
-                              <a href="<?= PRODUCT_PATH['create'] ?>" class=" btn rounded-5">
-                                  <i class="fa-solid fa-share"></i>
+                              <a href="<?= PRODUCT_PATH['create'] ?>" class=" btn rounded-5 col">
+                                  <i class="fa-solid fa-share small"></i>
                                   Add +
                               </a>
                           </div>

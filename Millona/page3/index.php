@@ -3,18 +3,15 @@
 session_start();
 
 require_once '../app/config/env.php';
+require_once '../app/config/assets_path.php';
 require_once '../app/core/Redirect.php';
 
 redirect_not_authenticated_user($_SESSION['user'], LOGIN);
 
-if (isset($_SESSION['user'])) {
-    if ($_SESSION['user']['user_level'] === '2') {
-        header('Location:' . PAGE2);
-    }
-}
+redirect_hr_accoutant();
 
-require_once '../../app/src/sales/SalesController.class.php';
 
+require_once '../app/src/sales/SalesController.class.php';
 
 $title = 'Page 3 Form';
 
@@ -69,14 +66,14 @@ if (isset($_POST['submit'])) {
 
 ?>
 
-<?php require_once '../../app/src/includes/header.inc.php' ?>
+<?php require_once '../app/src/includes/header.inc.php' ?>
 
 <div class="container is-fluid m-3 is-family-monospace">
     <!-- Navbar -->
-    <?php require_once '../../app/src/includes/page3-form/navbarForPage3.inc.php' ?>
+    <?php require_once '../app/src/includes/page3-form/navbarForPage3.inc.php' ?>
 
     <!-- header -->
-    <?php require_once '../../app/src/includes/page3-form/form-header.inc.php' ?>
+    <?php require_once '../app/src/includes/page3-form/form-header.inc.php' ?>
 
     <?php if (isset($error['error_name'])) : ?>
         <div class="notification is-danger">
@@ -91,7 +88,7 @@ if (isset($_POST['submit'])) {
                 <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]); ?>"  id="form" class="mr-3" method='POST'>
 
                     <!-- form body -->
-                    <?php require_once '../../app/src/includes/page3-form/form-body.inc.php' ?>
+                    <?php require_once '../app/src/includes/page3-form/form-body.inc.php' ?>
 
                 </form>
             </div>
@@ -99,4 +96,4 @@ if (isset($_POST['submit'])) {
     </div>
 </div>
 
-<?php require_once '../../app/src/includes/footer.inc.php' ?>
+<?php require_once '../app/src/includes/footer.inc.php' ?>

@@ -32,7 +32,7 @@ class UserController
     }
 
     
-    private function is_accountant($user)
+    private function is_cashier($user)
     {
         return $user['user_level'] === '0';
     }
@@ -40,6 +40,10 @@ class UserController
     private function is_hr($user)
     {
         return $user['user_level'] === '2';
+    } 
+    private function is_customer($user)
+    {
+        return $user['user_level'] === '3';
     }
 
     public function login()
@@ -58,7 +62,7 @@ class UserController
                 ADMIN);
         } 
 
-        else if ($this->is_accountant($user)) {
+        else if ($this->is_cashier($user)) {
 
             redirect_authenticated_user($this->getUserFromSession(),
                 PAGE3);
@@ -70,7 +74,7 @@ class UserController
                 PAGE2);
         }
 
-        else{
+        else if ($this->is_customer($user)){
             // redirect to authenticated user to main foods page
             redirect_authenticated_user($this->getUserFromSession(), MAINFOODPAGE);
         }
@@ -98,9 +102,32 @@ class UserController
 
         if ($userInsert){
             // save user to session
+
             $this->saveUserToSession($user);
-            // redirect to authenticated user to main foods page
-            redirect_authenticated_user($this->getUserFromSession(), MAINFOODPAGE);
+
+            if ($this->is_admin($user)) {
+
+                redirect_authenticated_user(
+                    $this->getUserFromSession(),
+                    ADMIN
+                );
+            } else if ($this->is_cashier($user)) {
+
+                redirect_authenticated_user(
+                    $this->getUserFromSession(),
+                    PAGE3
+                );
+            } else if ($this->is_hr($user)) {
+
+                redirect_authenticated_user(
+                    $this->getUserFromSession(),
+                    PAGE2
+                );
+            } else if ($this->is_customer($user)) {
+                // redirect to authenticated user to main foods page
+                redirect_authenticated_user($this->getUserFromSession(), MAINFOODPAGE);
+            }
+
         }
     }
 

@@ -3,17 +3,13 @@
 session_start();
 require_once '../app/core/Redirect.php';
 require_once '../app/config/env.php';
+require_once '../app/config/assets_path.php';
 
 $title = 'Foods | Mains';
 
 redirect_not_authenticated_user($_SESSION['user'], LOGIN);
 
-
-if (isset($_SESSION['user'])) {
-   if ($_SESSION['user']['user_level'] === '2') {
-        header('Location:' . PAGE2);
-    }
-}
+redirect_auth_user_level($_SESSION['user']['user_level'], 2, PAGE2);
 
 
 require_once '../app/config/Connection.php';

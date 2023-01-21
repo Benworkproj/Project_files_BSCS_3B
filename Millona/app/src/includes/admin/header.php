@@ -21,6 +21,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
     <link href="<?= CSS_ASSETS_PATH ?>/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
+
     <link href="<?= DEMO_PATH ?>/demo.css" rel="stylesheet" />
 
 
@@ -88,6 +89,16 @@
             100% {
                 transform: translate(1px, -2px) rotate(-1deg);
             }
+        }
+
+        .very-small-text {
+            font-size: 0.85rem;
+        }
+
+        /* cool admin background color */
+        .admin-background {
+            /* make admin background color more robust and unique */
+            background-image: linear-gradient(315deg, #f5f5f5 0%, #e7e7e7 74%);
         }
     </style>
 

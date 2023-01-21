@@ -9,14 +9,18 @@
 
     <!-- logo in the title  -->
     <link rel="shortcut icon" href="<?= LOGO ?>" type="image/x-icon">
-    <!-- Bulma CDN -->
-    <!-- Bulma CDN -->
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+    <!-- Bulma CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/foodhouse/public/assets/css/globals.css">
-    <link rel="stylesheet" href="/foodhouse/public/assets/css/icon-styles.css">
-    <link rel="stylesheet" href="/foodhouse/public/assets/css/responsive.css">
-    <link rel="stylesheet" href="/foodhouse/public/assets/css/grid-style.css">
+    <link rel="stylesheet" href="<?= CSS_ASSETS_PATH ?>/globals.css">
+    <link rel="stylesheet" href="<?= CSS_ASSETS_PATH ?>/icon-styles.css">
+    <link rel="stylesheet" href="<?= CSS_ASSETS_PATH ?>/responsive.css">
+    <link rel="stylesheet" href="<?= CSS_ASSETS_PATH ?>/grid-style.css">
 
     <!-- Semantic UI theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css" />
@@ -30,7 +34,22 @@
             /* add a cool and attractive gradient background color */
             background: linear-gradient(45deg, #f5f7fa, #c3cfe2);
         }
+        .light-color {
+            color: rgb(103, 101, 101);
+        }
+
+        .bg-very-light-gray {
+            background-color: rgb(245, 245, 245);
+        }
+
+        .custom-file-upload {
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
     </style>
+    </stylinput>
 </head>
 
 <body>

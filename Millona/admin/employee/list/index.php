@@ -8,12 +8,11 @@ require_once '../../../app/core/Redirect.php';
 
 
 redirect_not_authenticated_user($_SESSION['user'], LOGIN);
-
 redirect_not_admin();
 
-
-
 ?>
+
+
 <?php require_once '../../../app/src/includes/admin/header.php' ?>
 
 <?php require_once '../../../app/src/includes/admin/panel.php' ?>
