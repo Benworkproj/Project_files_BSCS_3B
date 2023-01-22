@@ -3,17 +3,10 @@
 session_start();
 require_once '../../../app/config/env.php';
 require_once '../../../app/core/Redirect.php';
+require_once '../../../app/config/assets_path.php';
 
 redirect_not_authenticated_user($_SESSION['user'], LOGIN);
-
-if (isset($_SESSION['user'])) {
-    if ($_SESSION['user']['user_level'] === '0') {
-        header('Location:' . PAGE3);
-    } else if ($_SESSION['user']['user_level'] === '2') {
-        header('Location:' . PAGE2);
-    }
-}
-
+redirect_not_admin();
 
 // get the id from the url
 $id = $_GET['id'];
@@ -102,7 +95,7 @@ if (isset($_POST['submit'])) {
                 CloseConnection($conn);
 
                 // redirect to the list page
-                header('location: /foodhouse/admin/product/list');
+                header('location: '. PRODUCT_PATH['list']);
             } else {
                 $errors['error_img'] = 'Image size is too big';
             }
@@ -157,5 +150,11 @@ if (isset($_POST['submit'])) {
 
     <a href="/foodhouse/admin/product/list" class="btn btn-danger">Cancel</a>
 </form>
+
+<!-- display image with style -->
+
+<div class="card" style="width: 18rem;">
+    <img src="<?= UPLOADS_PATH . '/'. $product['img'] ?>" class="card-img-top" alt="...">
+</div>
 
 <?php require_once '../../../app/src/includes/admin/footer.php' ?>

@@ -11,7 +11,7 @@
           <div class="sidebar-wrapper">
               <ul class="nav">
                   <li class="active ">
-                      <a href="">
+                      <a href="<?= ADMIN ?>">
                           <!-- dashboard icon using font awesome -->
                           <i class="fa-solid fa-universal-access"></i>
                           <p>Dashboard</p>

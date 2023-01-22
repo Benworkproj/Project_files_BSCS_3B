@@ -4,19 +4,15 @@ session_start();
 
 require_once '../app/config/env.php';
 require_once '../app/config/assets_path.php';
+require_once '../app/core/Redirect.php';
 require_once '../app/src/auth/UserController.class.php';
 
-redirect_auth_user_level($_SESSION['user']['user_level'], 0, PAGE3);
-redirect_auth_user_level($_SESSION['user']['user_level'], 1, ADMIN);
-redirect_auth_user_level($_SESSION['user']['user_level'], 2, PAGE2);
-redirect_auth_user_level($_SESSION['user']['user_level'], 3, MAINFOODPAGE_ALT);
+
+redirect_all();
 
 $title = 'Auth | Register Account';
 
-// check if the user has already logged in
-if (isset($_SESSION['user'])) {
-    header('location: '. MAINFOODPAGE);
-}
+$username = '';
 
 // handle form submission
 if (isset($_POST['submit'])) {
@@ -44,7 +40,7 @@ if (isset($_POST['submit'])) {
 
         <h1>Register</h1>
         <div class="txt_field">
-            <input type="text" name="<?= USERNAME[0] ?>" required>
+            <input type="text" name="<?= USERNAME[0] ?>" value="<?= $username ?>" required>
             <span></span>
             <label><?= USERNAME[1] ?></label>
         </div>
