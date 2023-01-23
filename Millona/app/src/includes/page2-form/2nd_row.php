@@ -90,7 +90,7 @@
                    type="text" 
                    class="form-control"
                    value="<?= $data['pag-ibig_contrib']?>"
-                   id="RegularDeduction3" placeholder="0.00">
+                   id="RegularDeduction3" readonly>
                </div>
 
            </div>

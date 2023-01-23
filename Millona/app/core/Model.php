@@ -187,3 +187,31 @@ class BaseSales{
     }
 
 }
+
+class EmployeeBaseModel
+{
+    private $cmd;
+    private $conn;
+    private $productmodel;
+
+    public function __construct()
+    {
+
+        $this->productmodel = new BaseProductModel();
+        $this->cmd = new DBCmd();
+        $this->conn = $this->productmodel->getConnection();
+    }
+
+    public function deleteEmployee($id)
+    {
+        $sql = "DELETE FROM employees_tbl WHERE id = '$id'";
+        $stmt = $this->conn->query($sql);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+}

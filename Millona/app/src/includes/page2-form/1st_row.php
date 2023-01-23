@@ -1,10 +1,7 @@
 <!-- Basic Information -->
 <div class="row fst-italic g-3 position-relative">
 
-    <div class="col-md-4">
-        <input type="text" name="emp_num" class="form-control" id="floatingInput" placeholder=" Employee Number ">
-        <label for="floatingInput"> <span class="light-color"> Employee Number </span></label>
-    </div>
+    
     <div class="col-md-4">
         <input type="text" class="form-control " id="Number-of-Dependent(s)" placeholder=" Number of Dependent(s)" name="num_dependent">
         <label for="Number-of-Dependent(s)"> <span class="light-color"> Number of Dependent(s)
