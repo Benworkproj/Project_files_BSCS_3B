@@ -41,7 +41,7 @@
                 <input 
                 name="total_deduction" type="number" 
                 class="form-control" id="Deduction1" 
-                value="<?= $data['total_deduction'] ?? '0.00' ?>" readonly>
+                value="<?= $data['total_deduction'] ?? 0.00?>" readonly>
             </div>
         </div>
 

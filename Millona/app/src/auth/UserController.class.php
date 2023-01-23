@@ -70,8 +70,10 @@ class UserController
 
         else if ($this->is_hr($user)) {
 
-            redirect_authenticated_user($this->getUserFromSession(),
-                PAGE2);
+            redirect_authenticated_user(
+                $this->getUserFromSession(),
+                EMPLOYEE_PATH['list']
+            );
         }
 
         else if ($this->is_customer($user)){
@@ -121,7 +123,7 @@ class UserController
 
                 redirect_authenticated_user(
                     $this->getUserFromSession(),
-                    PAGE2
+                    EMPLOYEE_PATH['list']
                 );
             } else if ($this->is_customer($user)) {
                 // redirect to authenticated user to main foods page

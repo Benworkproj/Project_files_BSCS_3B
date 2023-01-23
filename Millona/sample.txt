@@ -39,3 +39,22 @@ gross_income
 net_income
 total_deduction
 employee_img
+
+
+
+ <?php foreach ($employees as $employee) : ?>
+                                    <tr>
+                                        <td><?php echo $employee['employee_id'] ?></td>
+                                        <td><?php echo $employee['first_name'] ?></td>
+                                        <td><?php echo $employee['last_name'] ?></td>
+                                        <td><?php echo $employee['username'] ?></td>
+                                        <td><?php echo $employee['phone'] ?></td>
+                                        <td><?php echo $employee['address'] ?></td>
+                                        <td><?php echo $employee['user_level'] ?></td>
+                                        <td>
+                                            <a href="edit.php?employee_id=<?php echo $employee['employee_id'] ?>" class="btn btn-primary btn-sm">Edit</a>
+                                            <a href="delete.php?employee_id=<?php echo $employee['employee_id'] ?>" class="btn btn-danger btn-sm">Delete</a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>

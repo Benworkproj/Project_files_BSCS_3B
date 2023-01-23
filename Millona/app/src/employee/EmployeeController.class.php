@@ -4,7 +4,6 @@ require_once __DIR__ . '../../../core/Model.php';
 
 class EmployeeController
 {
-
     private $data = [];
     private $errors = [];
     private $model;
@@ -46,23 +45,27 @@ class EmployeeController
             $value = self::sanitize($value);
             $key = strtoupper($key);
 
-            if ($value === '' OR $value === null OR $value == 0) {
+            if ($value === '' OR $value === null OR $value <= 0) {
                 $this->errors['error_name'] = 'All fields are required';
             }
 
-            // check if the value is numeric
-            if (!self::check_CivilStatus($key == 'civil_status')) {
-                $this->errors['error_name'] = $key . ' is not valid';
+            // get the civil status select option
+            if ($key === 'civil_status') {
+                if (!self::check_CivilStatus($value)) {
+                    $this->errors['error_name'] = 'Invalid Civil Status';
+                }
             }
 
+            // get the employee status select option
+            if ($key === 'emp_status') {
+                if (!self::check_EmpStatus($value)) {
+                    $this->errors['error_name'] = 'Invalid Employee Status';
+                }
+            }
+
+            // check if the value is numeric
             if (!is_numeric($value)) {
                 $this->errors['error_name'] = $key . ' must be numeric';
-            }
- 
-            //  check if the value is not negative
-            // convert key to upper
-            if ($value <= 0) {
-                $this->errors['error_name'] = 'Please input a valid value to process your payroll';
             }
         }
         if (empty($this->errors)) {
@@ -83,7 +86,19 @@ class EmployeeController
         }
     }
 
+    private function check_EmpStatus($emp_status)
+    {
+        $emp_status = self::sanitize($emp_status);
+        //    check if the value is equal to the civil status
+        if (array_key_exists($emp_status, $this->emp_status)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
+
+    // -----------------  HELPERS -----------------
     private function sanitize($data)
     {
         $data = trim($data);
@@ -98,7 +113,11 @@ class EmployeeController
         return $employee_id;
     }
 
+
+    // -----------------  CRUD -----------------
+
     public function deleteEmployee( $employee_id ){
+
         $employee_id = self::sanitize($employee_id);
         $deleteEmployee = $this->model->deleteEmployee($employee_id);
 
@@ -108,6 +127,9 @@ class EmployeeController
             return false;
         }
     }
+
+
+
     
 
 }
