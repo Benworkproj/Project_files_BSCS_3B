@@ -11,7 +11,7 @@
             <div class="col-sm-4">
                 <input name="gross_income" 
                 type="number" class="form-control" id="IncomeSummary1" 
-                value="<?= $data['gross_income'] ?>" readonly>
+                value="<?= $data['gross_income'] ?? '0.00' ?>" readonly>
             </div>
         </div>
 
@@ -25,7 +25,7 @@
             <div class="col-sm-4">
                 <input name="net_income" type="number" 
                 class="form-control" id="IncomeSummary2" 
-                value="<?=  $data['net_income'] ?>" readonly>
+                value="<?=  $data['net_income'] ?? '0.00' ?>" readonly>
             </div>
         </div>
     </div>
@@ -41,13 +41,13 @@
                 <input 
                 name="total_deduction" type="number" 
                 class="form-control" id="Deduction1" 
-                value="<?= $data['total_deduction'] ?>" readonly>
+                value="<?= $data['total_deduction'] ?? '0.00' ?>" readonly>
             </div>
         </div>
 
         <div id="file-js-example" class="file has-name is-danger is-boxed">
             <label class="file-label py-3">
-                <input class="file-input" type="file" value="<?= $data['employee_img'] ?>" name="employee_img">
+                <input class="file-input" type="file" value="<?= $data['employee_img'] ?? '' ?>" name="employee_img">
 
                 <span class="file-cta">
                     <span class="file-icon">

@@ -8,4 +8,6 @@ redirect_not_authenticated_user($_SESSION['user'], LOGIN);
 
 
 $user = UserController::logout();
+// unset employee data in session
+unset($_SESSION['employee_data']);
 redirect_not_authenticated_user($_SESSION['user'], LOGIN);

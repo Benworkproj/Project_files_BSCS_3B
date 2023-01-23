@@ -1,4 +1,7 @@
-  <div class="wrapper admin-background">
+
+<?php if ($_SESSION['user']['user_level'] === '1') : ?>
+
+<div class="wrapper admin-background">
       <div class="sidebar" data-color="white" data-active-color="danger">
           <div class="logo">
               <a href="" class="simple-text logo-normal">
@@ -214,3 +217,4 @@
                       </div>
                   </div>
               </div>
+<?php endif; ?>

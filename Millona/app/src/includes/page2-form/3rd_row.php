@@ -1,44 +1,43 @@
  <div class="row row-cols-2 accordion-body g-5">
 
      <!--  Honorarium Column -->
-     <div class="col">
+    <div class="col">
 
-         <p class="display-6">Honorarium </p>
-         <div class="row md-4">
-             <label for="Honorarium1" class="col-md-6 col-form-label">
-                 Rate / Hour
-             </label>
+        <p class="display-6">Honorarium </p>
+        <div class="row md-4">
+            <label for="Honorarium1" class="col-md-6 col-form-label">
+                Rate / Hour
+            </label>
 
-             <div class="col-sm-4">
-                 <input type="number" class="form-control" id="Honorarium1" name="hono_rate_per_hr" value="<?= $data['hono_rate_per_hr'] ?>">
-             </div>
+            <div class="col-sm-4">
+                <input type="number" class="form-control" id="Honorarium1" name="hono_rate_per_hr" value="<?= $data['hono_rate_per_hr'] ??'0.00' ?>">
+            </div>
+        </div>
 
-         </div>
+        <br>
 
-         <br>
+        <div class="row md-4">
+            <label for="Honorarium2" class="col-md-6 col-form-label">
+                No. of hours / Cut Off
+            </label>
 
-         <div class="row md-4">
-             <label for="Honorarium2" class="col-md-6 col-form-label">
-                 No. of hours / Cut Off
-             </label>
+            <div class="col-sm-4">
+                <input type="number" class="form-control" id="Honorarium2" name="hono_num_of_hrs_per_cutOff" value="<?= $data['hono_num_of_hrs_per_cutOff']  ?? '0.00' ?>">
+            </div>
+        </div>
 
-             <div class="col-sm-4">
-                 <input type="number" class="form-control" id="Honorarium2" name="hono_num_of_hrs_per_cutOff" value="<?= $data['hono_hrs_per_cutOff'] ?>">
-             </div>
-         </div>
+        <br>
 
-         <br>
+        <div class="row md-4">
+            <label for="Honorarium3" class="col-md-6 col-form-label">
+                Total Honorarium Pay
+            </label>
 
-         <div class="row md-4">
-             <label for="Honorarium3" class="col-md-6 col-form-label">
-                 Total Honorarium Pay
-             </label>
-
-             <div class="col-sm-4">
-                 <input type="number" class="form-control" id="Honorarium3" name="total_hono_pay" value="<?=  $data['total_hono_pay']  ?>" readonly>
-             </div>
-         </div>
-     </div>
+            <div class="col-sm-4">
+                <input type="number" class="form-control" id="Honorarium3" name="total_hono_pay" value="<?=  $data['total_hono_pay'] ?? '0.00'  ?>" readonly>
+            </div>
+        </div>
+    </div>
 
      <!-- Other Deduction Column -->
      <div class="col">
@@ -49,7 +48,7 @@
              </label>
 
              <div class="col-sm-4">
-                 <input type="number" class="form-control" id="OtherDeduction1" placeholder="0.00" name="sss_loan" value="<?= $data['sss_loan'] ?>">
+                 <input type="number" class="form-control" id="OtherDeduction1" name="sss_loan" value="<?= $data['sss_loan'] ?? '0.00' ?>">
              </div>
 
          </div>
@@ -61,7 +60,7 @@
                  PAGIBIG Loan
              </label>
              <div class="col-sm-4">
-                 <input type="number" class="form-control" id="OtherDeduction2" placeholder="0.00" name="pag-ibig_loan" value="<?= $data['pag_ibig_loan'] ?>">
+                 <input type="number" class="form-control" id="OtherDeduction2" name="pag-ibig_loan" value="<?= $data['pag-ibig_loan'] ?? '0.00' ?>">
              </div>
          </div>
 
@@ -73,7 +72,9 @@
              </label>
 
              <div class="col-sm-4">
-                 <input type="number" class="form-control" id="OtherDeduction3" placeholder="0.00" name="fac_savings_deposit" value="<?= $data['fac_savings_deposit'] ?>">
+                 <input type="number" 
+                 class="form-control" id="OtherDeduction3" name="fac_savings_deposit" 
+                 value="<?= $data['fac_savings_deposit'] ?? '0.00'?>">
              </div>
          </div>
 
@@ -83,7 +84,10 @@
              </label>
 
              <div class="col-sm-4">
-                 <input type="number" class="form-control" id="OtherDeduction4" placeholder="0.00" name="fac_savings_loan" value="<?= $data['fac_savings_loan'] ?>">
+                 <input type="number" 
+                 class="form-control" 
+                 id="OtherDeduction4" name="fac_savings_loan" 
+                 value="<?= $data['fac_savings_loan'] ??'0.00' ?>">
              </div>
          </div>
 
@@ -94,8 +98,8 @@
                  Salary Loan
              </label>
              <div class="col-sm-4">
-                 <input type="number" class="form-control" id="OtherDeduction5" placeholder="0.00" name="salary_loan" 
-                 value="<?= $data['salary_loan'] ?>">
+                 <input type="number" class="form-control" id="OtherDeduction5"  name="salary_loan" 
+                 value="<?= $data['salary_loan'] ?? '0.00' ?>">
              </div>
          </div>
 
@@ -107,8 +111,8 @@
              </label>
 
              <div class="col-sm-4">
-                 <input type="number" class="form-control" id="OtherDeduction6" placeholder="0.00" name="others" 
-                 value="<?= $data['others'] ?>">
+                 <input type="number" class="form-control" id="OtherDeduction6" name="others" 
+                 value="<?= $data['others'] ?? '0.00' ?>">
              </div>
 
          </div>

@@ -37,6 +37,10 @@ function redirect_all(){
     }
 }
 
+function redirect_to_self($extra_url_param = null)
+{
+    header('Location: ' . $_SERVER['PHP_SELF'] . $extra_url_param);
+}
 
 function redirect_auth_user_level($field, $user_level, $path)
 {
