@@ -44,8 +44,13 @@
     <div class="col">
         <!-- select option for civil status -->
         <select name="civil_status" class="form-select" id="CivilStatus" aria-label="Floating label select example">
-            <option value="<?= $data['civil_status'] ?>" selected>
-                <?= ucfirst($data['civil_status']) ?>
+            <option value="<?= $data['civil_status'] ?? 'civil status' ?>" selected>
+                <!-- get the value -->
+                <?php if (isset($data['civil_status'])) : ?>
+                    <?= strtoupper($data['civil_status']) ?>
+                <?php else : ?>
+                    Civil Status
+                <?php endif; ?>
             </option>
             <option value="single"> Single </option>
             <option value="married"> Married </option>
@@ -58,8 +63,13 @@
     <div class="col">
         <!-- select option for employee status -->
         <select name="emp_status" class="form-select" id="EmployeeStatus" aria-label="Floating label select example">
-            <option value="<?= $data['emp_status'] ?? '' ?>" selected>
-                <?= ucfirst($data['emp_status']) ?? '' ?>
+            <option value="<?= $data['emp_status'] ?? 'employee status' ?>" selected>
+                <!-- get the value -->
+                <?php if (isset($data['emp_status'])) : ?>
+                    <?= strtoupper($data['emp_status']) ?>
+                <?php else : ?>
+                    Employee Status
+                <?php endif; ?>
             </option>
             <option value="regular"> Regular </option>
             <option value="contractual"> Contractual </option>
@@ -69,12 +79,20 @@
     </div>
 
     <!-- designation selec option -->
-    <div class="col">
+    <div class="col-3">
         <select name="designation" class="form-select" id="Designation" aria-label="Floating label select example">
-            <option value="<?= $data['designation'] ?>" selected>
-                <?= ucfirst($data['designation']) ?? 'Designation' ?>
+            <option value="<?= $data['designation'] ?? 'designation' ?>" selected>
+                <!-- get the value -->
+                <?php if (isset($data['designation'])) : ?>
+                    <?= strtoupper($data['designation']) ?>
+                <?php else : ?>
+                    Designations
+                <?php endif; ?>
             </option>
             <option value="manager"> Manager </option>
+            <option value="team_leader"> Team Leader </option>
+            <option value="cashier"> Cashier </option>
+            <option value="accountant"> Accountant </option>
             <option value="supervisor"> Supervisor </option>
             <option value="staff"> Staff </option>
             <option value="none"> None of the above </option>
@@ -84,11 +102,15 @@
     <!-- department select option -->
     <div class="col">
         <select name="department" class="form-select" id="Department" aria-label="Floating label select example">
-            <!-- allow user to have a blank option -->
-            <option value="<?= $data['department'] ?>" selected>
-                <?= ucfirst($data['department']) ?? 'Department' ?>
+            <option value="<?= $data['department'] ?? 'department' ?>" selected>
+                <!-- get the value -->
+                <?php if (isset($data['department'])) : ?>
+                    <?= strtoupper($data['department']) ?>
+                <?php else : ?>
+                    Department
+                <?php endif; ?>
             </option>
-            <option value="it"> IT </option>
+            <option value="IT"> IT </option>
             <option value="hr"> HR </option>
             <option value="accounting"> Accounting </option>
             <option value="sales"> Sales </option>

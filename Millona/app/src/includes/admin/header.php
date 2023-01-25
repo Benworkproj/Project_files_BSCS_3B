@@ -6,7 +6,16 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title> Food House - Admin <?= $title ?>
+    <title> Food House -
+        <?php if ($_SESSION['user']['user_level'] === '0') : ?>
+            Cashier (<?= $title ?>)
+        <?php elseif ($_SESSION['user']['user_level'] === '1') : ?>
+            Admin (<?= $title ?>)
+        <?php elseif ($_SESSION['user']['user_level'] === '2') : ?>
+            HR (<?= $title ?>)
+        <?php elseif ($_SESSION['user']['user_level'] === '3') : ?>
+            Customer (<?= $title ?>)
+        <?php endif; ?>
     </title>
 
     <link rel="shortcut icon" href="<?= LOGO ?>" type="image/x-icon">
@@ -22,8 +31,9 @@
 
     <link href="<?= CSS_ASSETS_PATH ?>/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
 
-    <link href="<?= DEMO_PATH ?>/demo.css" rel="stylesheet" />
+    <link href="<?= CSS_ASSETS_PATH ?>/table-style.css" rel="stylesheet" />
 
+    <link href="<?= DEMO_PATH ?>/demo.css" rel="stylesheet" />
 
     <style>
         .error {

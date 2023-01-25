@@ -10,61 +10,109 @@ require_once '../../../app/core/Redirect.php';
 redirect_not_authenticated_user($_SESSION['user'], LOGIN);
 redirect_cashiers_customers();
 
+$title = 'Employee List';
 
 ?>
 
 
 <?php require_once '../../../app/src/includes/admin/header.php' ?>
+
 <?php if ($_SESSION['user']['user_level'] === '1') : ?>
 
     <?php require_once '../../../app/src/includes/admin/panel.php' ?>
 
 <?php endif; ?>
 
+<section class="intro">
+    <!-- add a add button -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1 class="h3 mb-0">Employee List</h1>
+                    <a href="<?= PAGE2 ?>" class="btn btn-primary btn-sm">Add Employee</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<!-- create a create a modern crud table  -->
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title text-center">Employee List</h4>
-                    <div class="table-responsive">
-                        <table id="zero_config" class="table table-striped table-bordered no-wrap">
-                            <thead>
-                                <tr>
-                                    <th>Employee ID</th>
-                                    <th>Name</th>
-                                    <th>Phone No.</th>
-                                    <th>Address</th>
-                                    <th>Civil Status</th>
-                                    <th>Employee Status</th>
-                                    <th>Department</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                            <tfoot>
-                                <tr>
-                                    <th>Employee ID</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Username</th>
-
-                                    <th>Phone</th>
-                                    <th>Address</th>
-                                    <th>Role</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </tfoot>
-                        </table>
+    <div class="bg-image h-100 tbl-bg-image">
+        <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0,0,0,.35);">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="table-responsive bg-white" data-mdb-perfect-scrollbar="true" style="position: relative; width:auto;">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">EMPLOYEES</th>
+                                        <th scope="col">POSITION</th>
+                                        <th scope="col">START DATE</th>
+                                        <th scope="col">LAST ACTIVITY</th>
+                                        <th scope="col">CONTACTS</th>
+                                        <th scope="col">AGE</th>
+                                        <th scope="col">ADDRESS</th>
+                                        <th scope="col">SALARY</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+                                                <div class="ms-3">
+                                                    <p class="fw-bold mb-1">John Doe</p>
+                                                    <p class="text-muted mb-0">john.doe@gmail.com</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="fw-normal mb-1">Software engineer</p>
+                                            <p class="text-muted mb-0">IT department</p>
+                                        </td>
+                                        <td>
+                                            <span class="badge badge-success rounded-pill d-inline">Active</span>
+                                        </td>
+                                        <td>Senior</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm btn-rounded">
+                                                Edit
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+                                                <div class="ms-3">
+                                                    <p class="fw-bold mb-1">John Doe</p>
+                                                    <p class="text-muted mb-0">john.doe@gmail.com</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="fw-normal mb-1">Software engineer</p>
+                                            <p class="text-muted mb-0">IT department</p>
+                                        </td>
+                                        <td>
+                                            <span class="badge badge-success rounded-pill d-inline">Active</span>
+                                        </td>
+                                        <td>Senior</td>
+                                        <td>
+                                            <button type="button" class="btn btn-link btn-sm btn-rounded">
+                                                Edit
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
+</section>
 
 <!-- 
 <div class="card inner_card px-4 py-2">

@@ -8,7 +8,7 @@
                   Rate / Hour
               </label>
               <div class="col-sm-4">
-                  <input type="number" class="form-control" id="OtherIncome1" name="other_income_rate_per_hr" value="<?= $data['other_income_rate_per_hr'] ?? '0.00' ?>">
+                  <input type="number" class="form-control" id="OtherIncome1" name="other_income_rate_per_hr" value="<?= $data['other_income_rate_per_hr'] ?? 0 ?>">
               </div>
           </div>
 
@@ -20,7 +20,7 @@
               </label>
 
               <div class="col-sm-4">
-                  <input type="number" class="form-control" id="OtherIncome2" name="other_income_num_of_hrs_per_cutOff" value="<?= $data['other_income_num_of_hrs_per_cutOff'] ?? '0.00'?>">
+                  <input type="number" class="form-control" id="OtherIncome2" name="other_income_num_of_hrs_per_cutOff" value="<?= $data['other_income_num_of_hrs_per_cutOff'] ?? 0 ?>">
               </div>
           </div>
 
@@ -32,9 +32,7 @@
               </label>
 
               <div class="col-sm-4">
-                  <input 
-                  type="number" class="form-control" id="OtherIncome3" name="total_other_income_pay" 
-                  value="<?= $data['total_other_income_pay'] ?? '0.00' ?>" readonly>
+                  <input type="number" class="form-control" id="OtherIncome3" name="total_other_income_pay" value="<?= $data['total_other_income_pay'] ?? 0?>" readonly>
               </div>
           </div>
       </div>

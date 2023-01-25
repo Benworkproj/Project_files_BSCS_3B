@@ -11,7 +11,7 @@ class ImageUpload{
     private $image_tmp_name;
     private $image_size;
     private $image_error;
-    private $error = [];
+    private $errors = [];
     private $allowed_ext = array('jpg', 'jpeg', 'png');
     private $model;
 
@@ -40,27 +40,27 @@ class ImageUpload{
         $actualExt = $this->expolodeImageName();
 
         if (!in_array($actualExt, $this->allowed_ext)) {
-            $this->error['error_name'] = 'You cannot upload files of this type';
+            $this->errors['error_name'] = 'You cannot upload files of this type';
             
             if ($this->image_error !== 0) {
-                $this->error['error_name'] = 'There was an error uploading your file';
+                $this->errors['error_name'] = 'There was an error uploading your file';
 
                 if ($this->image_size > 1000000) {
-                    $this->error['error_name'] = 'File size too large';
+                    $this->errors['error_name'] = 'File size too large';
                 }
             }
         }
 
         // if image is empty
         if (empty($this->image_name)) {
-            $this->error['error_name'] = 'Image is required';
+            $this->errors['error_name'] = 'Image is required';
         }
 
         if ($this->isProductImageExist($this->image_name)) {
-            $this->error['error_name'] = 'Image already exist';
+            $this->errors['error_name'] = 'Image already exist';
         }
 
-        return $this->error;
+        return $this->errors;
 
     }
 

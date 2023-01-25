@@ -34,6 +34,7 @@
             /* add a cool and attractive gradient background color */
             background: linear-gradient(45deg, #f5f7fa, #c3cfe2);
         }
+
         .light-color {
             color: rgb(103, 101, 101);
         }

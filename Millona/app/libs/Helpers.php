@@ -1,6 +1,6 @@
 <?php
 
-class Helper{
+class Helpers{
 
     public static function sanitize($data)
     {
@@ -10,10 +10,10 @@ class Helper{
         return $data;
     }
 
-    public static function generateEmployeeId($employee_id)
+    public static function generateRandomNumber()
     {
-        $employee_id = rand(100000, 999999);
-        return $employee_id;
+        $value = rand(100000, 999999);
+        return $value;
     }
 
     // return the length of the string
@@ -21,6 +21,14 @@ class Helper{
     {
         $string = self::sanitize($string);
         $string = strlen($string);
+        return $string;
+    }
+
+    // remove underscores and spaces from the string
+    public static function removeUnderscore($string)
+    {
+        $string = self::sanitize($string);
+        $string = str_replace('_', ' ', $string);
         return $string;
     }
 

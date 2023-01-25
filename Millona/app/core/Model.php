@@ -202,6 +202,130 @@ class EmployeeBaseModel
         $this->conn = $this->productmodel->getConnection();
     }
 
+    public function addEmployee($emp)
+    {
+        $empID = $emp['employee_id'] ;
+        $user_lvl = $_SESSION['user']['user_level'];
+        $emp_dependents = $emp['num_dependent'];
+        $emp_payDate = $emp['pay_date'];
+        $emp_fname = $emp['f_name'];
+        $emp_lname = $emp['l_name'];
+        $emp_civilStatus = $emp['civil_status'];
+        $emp_empStatus = $emp['emp_status'];
+        $emp_designation = $emp['designation'];
+        $emp_department = $emp['department'];
+        $emp_img = $emp['employee_img'];
+
+        $emp_basicPayPerHr = $emp['basicPay_rate_per_hr'];
+        $emp_basicPayPerCutOff = $emp['basicPay_num_of_hrs_per_cutOff'];
+        $emp_total_basicPay = $emp['basicPay_income_per_cutOff'];
+
+        $emp_sss_contrib = $emp['sss'];
+        $emp_philhealth_contrib = $emp['phil_health'];
+        $emp_pagibig_contrib = $emp['pag-ibig'];
+        $emp_tax = $emp['tax_value'];
+
+        $emp_honoPerHr = $emp['hono_rate_per_hr'];
+        $emp_honoPerCutOff = $emp['hono_num_of_hrs_per_cutOff'];
+        $emp_totalHono = $emp['total_hono_pay'];
+
+        $emp_sssLoan = $emp['sss_loan'];
+        $emp_pagibig_loan = $emp['pag-ibig_loan'];
+        $emp_fac_savings_deposit = $emp['fac_savings_deposit'];
+        $emp_fac_savings_loan = $emp['fac_savings_loan'];
+        $emp_salarayLoan = $emp['salary_loan'];
+        $emp_others = $emp['others'];
+
+        $emp_incomePerHr = $emp['other_income_rate_per_hr'];
+        $emp_incomePerCutOff = $emp['other_income_num_of_hrs_per_cutOff'];
+
+        $emp_totalOtherIncome = $emp['total_other_income_pay'];
+
+        $emp_grossIncome = $emp['gross_income'];
+        $emp_netIncome = $emp['net_income'];
+        $emp_totalDeduction = $emp['total_deduction'];
+
+        // insert data into the database using looping into an array of keys
+        $sql = "INSERT INTO employee_tbl (
+            emp_id ,
+            added_by_user_level,
+            emp_pay_date,
+            f_name,
+            l_name,
+            num_dependent,
+            emp_civil_status,
+            emp_status,
+            designation,
+            department,
+            emp_img,
+            basicPay_rate_per_hr,
+            basicPay_hrs_per_cutOff,
+            total_basicpay,
+            sss_contrib,
+            phil_health_contrib,
+            pag_ibig_contrib,
+            tax_val,
+            hono_rate_per_hr,
+            hono_hrs_per_cutOff,
+            total_hono_pay,
+            sss_loan,
+            pag_ibig_loan,
+            fac_savings_deposit,
+            fac_savings_loan,
+            salary_loan,
+            others,
+            other_income_rate_per_hr,
+            other_income_num_of_hrs_per_cutOff,
+            total_other_income_pay,
+            gross_income,
+            net_income,
+            total_deduction
+        ) VALUES (
+            '$empID',
+            ' $user_lvl',
+            '$emp_payDate',
+            '$emp_fname',
+            '$emp_lname',
+            '$emp_dependents',
+            '$emp_civilStatus',
+            '$emp_empStatus',
+            '$emp_designation',
+            '$emp_department',
+            '$emp_img',
+            '$emp_basicPayPerHr',
+            '$emp_basicPayPerCutOff',
+            '$emp_total_basicPay',
+            '$emp_sss_contrib',
+            '$emp_philhealth_contrib',
+            '$emp_pagibig_contrib',
+            '$emp_tax',
+            '$emp_honoPerHr',
+            '$emp_honoPerCutOff',
+            '$emp_totalHono',
+            '$emp_sssLoan',
+            '$emp_pagibig_loan',
+            '$emp_fac_savings_deposit',
+            '$emp_fac_savings_loan',
+            '$emp_salarayLoan',
+            '$emp_others',
+            '$emp_incomePerHr',
+            '$emp_incomePerCutOff',
+            '$emp_totalOtherIncome',
+            '$emp_grossIncome',
+            '$emp_netIncome',
+            '$emp_totalDeduction'
+        )";
+
+        $stmt = $this->conn->query($sql);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     public function deleteEmployee($id)
     {
         $sql = "DELETE FROM employees_tbl WHERE id = '$id'";
