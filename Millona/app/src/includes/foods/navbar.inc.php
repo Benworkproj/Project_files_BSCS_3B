@@ -7,10 +7,19 @@
                 <span>Back to page 3</span>
             </a>
         </li>
-        <li class="route2 is-active">
-            <a href="#" class="fire">
+        <li class="route2">
+            <a href="<?= MAINFOODPAGE ?>" class="fire">
                 <span class="icon is-small"><i class="fa-solid fa-fire"></i></span>
                 <span>Popular Dishes</span>
+            </a>
+        </li>
+
+        <li class="route2">
+            <a href="<?= CART_PATH['list'] ?>" class="fire">
+                <span class="icon is-small">
+                    <i class="fa-solid fa-shopping-cart"></i>
+                </span>
+                <span>Cart</span>
             </a>
         </li>
 

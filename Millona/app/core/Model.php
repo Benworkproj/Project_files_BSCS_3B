@@ -20,7 +20,7 @@ function insertUser($username, $user_password)
 function insertUser2($username, $user_password, $user_lvl)
 {
     $sql = "INSERT INTO accounts (username, user_password, user_level) VALUES ('$username', '$user_password', '$user_lvl')";
-    
+
     $conn = DBConnection();
 
     $stmt = $conn->query($sql);
@@ -51,6 +51,22 @@ function getUser($username)
     }
 }
 
+function getUserById($id)
+{
+    $sql = "SELECT * FROM accounts WHERE user_id = '$id'";
+    $conn = DBConnection();
+    $stmt = $conn->query($sql);
+
+    // use mysqli to fetch the data
+    $user = $stmt->fetch_assoc();
+
+    if ($user) {
+        return $user;
+    } else {
+        return false;
+    }
+}
+
 function getUsers()
 {
     $sql = 'SELECT * FROM accounts';
@@ -61,6 +77,25 @@ function getUsers()
     $users = $stmt->fetch_all(MYSQLI_ASSOC);
 
     return $users;
+
+}
+
+function updateUser( $data ){
+
+    $username = $data['username'];
+    $user_level = $data['user_level'];
+
+    $sql = "UPDATE accounts SET username = '$username', user_level = '$user_level' WHERE username = '$username'";
+
+    $conn = DBConnection();
+
+    $stmt = $conn->query($sql);
+
+    if ($stmt) {
+        return true;
+    } else {
+        return false;
+    }
 
 }
 
@@ -151,6 +186,59 @@ class BaseProductModel{
         }
     }
 }
+
+class CartModel
+{
+    private $conn;
+    private $cmd;
+    private $productmodel;
+
+    public function __construct()
+    {
+        $this->productmodel = new BaseProductModel();
+        $this->cmd = new DBCmd();
+        $this->conn = $this->productmodel->getConnection();
+    }
+
+    // add product
+    public function addToCart($product_id, $user_id)
+    {
+        
+        $sql = "INSERT INTO cart (product_id, user_id) VALUES ('$product_id', '$user_id')";
+
+        $stmt = $this->conn->query($sql);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    public function getAllProductsInCart($user_id)
+    {
+
+        // use join statemtn to get the product details as well as the cart details
+        $sql = "SELECT * FROM cart INNER JOIN main_foods_tbl ON cart.product_id = main_foods_tbl.id WHERE cart.user_id = '$user_id'";
+
+        $stmt = $this->conn->query($sql);
+
+        $cart = $stmt->fetch_all(MYSQLI_ASSOC);
+
+        return $cart;
+
+        // $sql = "SELECT * FROM cart WHERE user_id = '$user_id'";
+
+        // $stmt = $this->conn->query($sql);
+
+        // $cart = $stmt->fetch_all(MYSQLI_ASSOC);
+
+        // return $cart;
+    }
+
+}
+
 
 class BaseSales{
 

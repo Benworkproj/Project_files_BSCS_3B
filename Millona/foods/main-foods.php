@@ -11,21 +11,37 @@ redirect_not_authenticated_user($_SESSION['user'], LOGIN);
 
 redirect_auth_user_level($_SESSION['user']['user_level'], 2, PAGE2);
 
-require_once '../app/config/Connection.php';
+require_once '../app/core/Model.php';
+require_once '../app/src/cart/CartController.php';
 
-// get the connection
-$conn = DBConnection();
 
-// get the food items
-$sql = "SELECT * FROM main_foods_tbl";
+$base_product_model = new BaseProductModel();
+$products = $base_product_model->getAllProducts();
 
-$stmt = $conn->query($sql);
+$cart = new CartController();
+$user_id = $_SESSION['user']['user_id'];
 
-// fetch the data and return it using mysqli
-$products = $stmt->fetch_all(MYSQLI_ASSOC);
+$errors = [];
 
-// close the connection
-CloseConnection($conn);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['addToCart'])) {
+        $cart_model = new CartModel();
+
+        $product_id = $_POST['product_id'];
+
+        $errors = $cart->checkCartExist($user_id, $product_id);
+
+        if (empty($errors)) {
+
+            $addedToCart = $cart_model->addToCart($product_id, $user_id);
+
+            if ($addedToCart) {
+                $food_name = $_POST['food_name'];
+                $errors['success'] = "$food_name has been added to cart";
+            }
+        }
+    }
+}
 
 ?>
 
@@ -40,19 +56,29 @@ CloseConnection($conn);
 
     <?php require_once '../app/src/includes/foods/navbar.inc.php' ?>
 
+    <?php if (isset($errors['error_message'])) : ?>
+        <div class="alert alert-info text-center">
+            <?php echo $errors['error_message'];
+            unset($errors['error_message']); ?>
+        </div>
+    <?php elseif (isset($errors['success'])) : ?>
+        <div class="alert alert-success text-center">
+            <?php echo $errors['success'];
+            unset($errors['success']); ?>
+        </div>
+    <?php endif ?>
+
     <div class='grid-container'>
-        
         <?php foreach ($products as $product) { ?>
-            <?php 
+            <?php
             $id = $product['id'];
             $food_name = $product['food_name'];
             $price = $product['price'];
             $img = $product['img'];
             ?>
-
             <?php require '../app/src/includes/foods/food-content.inc.php'; ?>
-        <?php } ?>
 
+        <?php } ?>
     </div>
 </div>
 

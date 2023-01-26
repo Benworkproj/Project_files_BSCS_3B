@@ -35,10 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 
             redirect_with_params(SALES_PATH['list'], ['message' => 'Sales added successfully']);
         }
-
-        echo '<pre>';
-        print_r($data);
-        echo '</pre>';
     }
 }
 
@@ -67,8 +63,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                 <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]); ?>"  id="form" class="mr-3" method='POST'>
                     <!-- form body -->
                     <?php require_once '../app/src/includes/page3-form/form-body.inc.php' ?>
-
-                    <!-- the new button is the submit button -->
                 </form>
             </div>
         </div>

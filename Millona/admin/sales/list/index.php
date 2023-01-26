@@ -120,10 +120,6 @@ $sales = SalesController::getAllSales();
                                         </td>
 
                                         <td>
-                                            <a href="<?= SALES_PATH['edit'] ?>/index.php?id=<?= $row['sales_id'] ?>" class="btn btn-primary btn-sm">
-                                                Edit
-                                            </a>
-
                                             <a href="<?= SALES_PATH['delete'] ?>/index.php?id=<?= $row['sales_id'] ?>" class="btn btn-danger btn-sm">
                                                 Delete
                                             </a>

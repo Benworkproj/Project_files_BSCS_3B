@@ -4,6 +4,7 @@ session_start();
 require_once '../../../app/config/env.php';
 require_once '../../../app/config/assets_path.php';
 require_once '../../../app/core/Redirect.php';
+require_once '../../../app/libs/Image.php';
 
 redirect_not_authenticated_user($_SESSION['user'], LOGIN);
 
@@ -12,35 +13,40 @@ redirect_not_admin();
 require_once '../../../app/core/Model.php';
 require_once '../../../app/src/auth/UserController.class.php';
 
-$title = 'Create User Account';
-$username = '';
+$title = 'Update User Account';
+
+// fetch the url params
+$user_id = $_GET['id'];
+
 $errors = [];
 
-if (isset($_POST['register'])) {
+$user = getUserById($user_id);
 
+$user_level = $user['user_level'];
+
+if (isset($_POST['update'])) {
     $username = $_POST[USERNAME[0]];
-    $user_password = $_POST[PASSWORD[0]];
-    $confirm_password = $_POST['confirm-password'];
     $user_level = $_POST['user_level'];
 
-    $user = new UserController($username, $user_password);
-    $user->set_confirm_password($confirm_password);
-    $user->setUserLevel($user_level);
-    $errors = $user->validateUserAccountInAdminForm();
+    $errors = UserController::validateUpdateUserInAdminForm($username, $user_level);
 
     if (empty($errors)) {
-        $user_saved = $user->saveUser();
+        $data = [
+            'username' => $username,
+            'user_level' => $user_level,
+        ];
 
-        if ($user_saved) {
-            $_SESSION['success'] = 'User account created successfully';
-            header('Location: ' . ACCOUNTS_PATH['list']);
+        $updated_user = updateUser($data);
+
+        if ($updated_user) {
+            $_SESSION['success'] = 'User $data["username"] account updated successfully';
+            header('location: ' . ACCOUNTS_PATH['list']);
         }
     }
 }
 
+
 ?>
-
-
 <?php require_once '../../../app/src/includes/admin/header.php' ?>
 
 <style>
@@ -118,10 +124,6 @@ if (isset($_POST['register'])) {
             <div class="col-lg-12 col-xl-11">
                 <div class="card text-black" style="border-radius: 25px;">
                     <div class="card-body p-md-5">
-
-                    <!-- add an x icon  -->
-                    <a href="<?= ACCOUNTS_PATH['list'] ?>" class="btn btn-danger btn-sm mb-3">X</a>
-
                         <div class="row justify-content-center">
                             <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
@@ -137,9 +139,7 @@ if (isset($_POST['register'])) {
                                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
 
                                         <div class="form-outline flex-fill mb-0">
-                                            <input name="<?= USERNAME[0] ?>" type="text" placeholder="Enter a valid username here" id="form3Example1c" class="form-control"
-                                            value="<?= $username ?>"
-                                            />
+                                            <input name="<?= USERNAME[0] ?>" type="text" placeholder="Enter a valid username here" id="form3Example1c" class="form-control" value="<?= $user['username'] ?>" />
 
                                             <label class="form-label" for="form3Example1c">
                                                 Username
@@ -157,9 +157,7 @@ if (isset($_POST['register'])) {
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fa-solid  fa-person-circle-question fa-lg fa-fw me-3"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <select 
-                                            name="user_level" class="form-select" aria-label="Default select example"
-                                            >
+                                            <select name="user_level" class="form-select" aria-label="Default select example">
                                                 <?php if (isset($user_level)) : ?>
                                                     <option value="<?= $user_level ?>" selected>
                                                         <?php if ($user_level == 0) : ?>
@@ -170,7 +168,7 @@ if (isset($_POST['register'])) {
                                                             Accounting/HR
                                                         <?php elseif ($user_level == 3) : ?>
                                                             Regular User
-                                                        <!-- default -->
+                                                            <!-- default -->
                                                         <?php else : ?>
                                                             Select User Level
                                                         <?php endif ?>
@@ -185,41 +183,11 @@ if (isset($_POST['register'])) {
                                     </div>
 
 
-                                    <!-- error message here -->
-                                    <?php if (isset($errors['user_password'])) : ?>
-                                        <div class="error">
-                                            <?= $errors['user_password'] ?>
-                                        </div>
-                                    <?php endif ?>
-                                    <div class="d-flex flex-row align-items-center mb-4">
-                                        <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                                        <div class="form-outline flex-fill mb-0">
-                                            <input placeholder="Enter a valid password here" name="<?= PASSWORD[0] ?>" type="password" id="form3Example4c" class="form-control" />
-
-                                            <label class="form-label" for="form3Example4c">
-                                                Password
-                                            </label>
-                                        </div>
-                                    </div>
-
-
-
-                                    <?php if (isset($errors['confirm_password'])) : ?>
-                                        <div class="error">
-                                            <?= $errors['confirm_password'] ?>
-                                        </div>
-                                    <?php endif ?>
-                                    <div class="d-flex flex-row align-items-center mb-4">
-                                        <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                                        <div class="form-outline flex-fill mb-0">
-                                            <input name='confirm-password' type="password" id="form3Example4cd" class="form-control" placeholder="Please verify your password" />
-                                            <label class="form-label" for="form3Example4cd">Repeat your password</label>
-                                        </div>
-                                    </div>
-
                                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                        <button type="submit" name='register' class="btn btn-primary btn-lg">Register</button>
+                                        <button type="submit" name='update' class="btn btn-primary btn-lg">Update</button>
+                                        <a href="<?= ACCOUNTS_PATH['list'] ?>" class="btn btn-danger btn-lg">Discard</a>
                                     </div>
+
 
                                 </form>
 

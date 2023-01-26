@@ -137,7 +137,7 @@ if (isset($_POST['submit'])) {
 
     <!-- cancel butn -->
 
-    <a href="/foodhouse/admin/product/list" class="btn btn-danger">Cancel</a>
+    <a href="<?= PRODUCT_PATH['list'] ?>" class="btn btn-danger">Cancel</a>
 </form>
 
 <!-- display image with style -->

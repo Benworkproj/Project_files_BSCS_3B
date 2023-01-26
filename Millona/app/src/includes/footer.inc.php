@@ -10,7 +10,7 @@
 <script defer src="<?= JS_ASSETS_PATH ?>/utils/bindDataToInput.js"></script>
 <script defer src="<?= JS_ASSETS_PATH ?>/calculatorFunctions.js"></script>
 <script defer src="<?= JS_ASSETS_PATH ?>/selectBtn.js"></script>
-<script defer src="<?= JS_ASSETS_PATH ?>/addToCart.js"></script>
+<!-- <script defer src/addToCart.js"></script> -->
 
 </body>
 

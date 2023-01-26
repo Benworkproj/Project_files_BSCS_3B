@@ -148,11 +148,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-echo "<pre>";
-print_r($emp);
-echo "</pre>";
-
-
 ?>
 
 
@@ -210,7 +205,7 @@ echo "</pre>";
 
             <button name='clear' type="submit">CLEAR</button>
 
-            <button name="back" type="submit" class="btn btn-outline-danger">BACK</button>
+            <button name="back" type="submit" class="btn btn-outline-danger">DISCARD CHANGES</button>
 
         </div>
 

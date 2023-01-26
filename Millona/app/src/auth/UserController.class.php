@@ -183,6 +183,35 @@ class UserController
     }
 
 
+    public static function validateUpdateUserInAdminForm($data){
+
+        $errors = [];
+        // sanitize every data
+        $data = array_map('trim', $data);
+        $data = array_map('htmlspecialchars', $data);
+        $data = array_map('stripslashes', $data);
+
+        // validate username
+        if (!preg_match("/^[a-zA-Z0-9]*$/", $data['username'])) {
+            $errors['username'] = "Username must be alphanumeric";
+        } else if (strlen($data['username']) < 8) {
+            $errors['username'] = "Username must be at least 8 characters";
+        } elseif (empty($data['username'])) {
+            $errors['username'] = "Username is required";
+        }
+
+        // validate user role
+        if (empty($data['user_level'])) {
+            $errors['user_level'] = "User role is required";
+        }
+        elseif (in_array($data['user_level'], ['0', '1', '2', '3']) === false) {
+            $errors['user_level'] = "Invalid user role";
+        }
+
+        return $errors;
+    }
+
+
     // FORM VALIDATION FOR LOGIN
     public function validateLoginForm()
     {
@@ -410,4 +439,5 @@ class UserController
         return false;
        
     }
+
 }

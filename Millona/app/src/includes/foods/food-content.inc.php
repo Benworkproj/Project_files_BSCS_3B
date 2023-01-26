@@ -1,4 +1,4 @@
-<div id="child<?= $id ?>" class="child-grid">
+<form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="child-grid" method="POST">
 
     <figure>
         <img src="<?= UPLOADS_PATH ?>/<?= $img ?>" class="is-rounded" alt="main food item">
@@ -7,11 +7,10 @@
     <div id="" class="grid-footer selectBtn">
         <div>
             <label for="PriceTag" style="margin-right: 10px;"><i class="fa-solid
-          fa-tag" style="color: red;"></i></label>
+        fa-tag" style="color: red;"></i></label>
 
-            <input type="hidden" name="id" value="<?= $id ?>">
+            <input type="hidden" name="product_id" value="<?= $id ?>">
             <input type="hidden" name="food_name" value="<?= $food_name ?>">
-            <input type="hidden" name="price" value="<?= $price ?>">
 
             <span name="PriceTag" class="icon">
                 <i class="fa-solid fa-peso-sign"></i>
@@ -27,7 +26,7 @@
         <div id="">
             <p class="control">
                 <button id="" name="selectBtn" type="submit" onclick="" class="button button-bg-green is-rounded
-          is-responsive">
+        is-responsive">
                     <span class="icon">
                         <i class="fa-solid fa-circle-check"></i>
                     </span>
@@ -38,8 +37,8 @@
     </div>
     <div id="addtocart${i + 1}" class="addToCartBtn">
         <p class="control1">
-            <button id="button" class="button button-bg-green is-rounded
-      is-responsive ">
+            <button type="submit" name="addToCart" class="button button-bg-green is-rounded
+    is-responsive ">
                 <span class="icon">
                     <i class="fa-solid fa-circle-check"></i>
                 </span>
@@ -47,5 +46,4 @@
             </button>
         </p>
     </div>
-
-</div>
+</form>

@@ -102,7 +102,7 @@ $users = getUsers();
                                                     Edit
                                                 </a>
 
-                                                <a href="<?= SALES_PATH['delete'] ?>/index.php?id=<?= $row['user_id'] ?>" class="btn btn-danger btn-sm">
+                                                <a href="<?= ACCOUNTS_PATH['delete'] ?>/index.php?id=<?= $row['user_id'] ?>" class="btn btn-danger btn-sm">
                                                     Delete
                                                 </a>
                                             </td>

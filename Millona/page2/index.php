@@ -110,11 +110,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 $emp['emp_id'] = Helpers::generateRandomNumber();
                 $emp['emp_img'] = $new_img;
-
-                echo "<pre>";
-                print_r($emp);
-                echo "</pre>";
-
                 $insertEmployee = $employeeController->addEmployee($emp);
 
                 if ($insertEmployee) {
@@ -138,11 +133,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         redirect_with_params(EMPLOYEE_PATH['list'] . '/', ['message' => '']);
     }
 }
-
-echo "<pre>";
-print_r($emp);
-echo "</pre>";
-
 
 ?>
 

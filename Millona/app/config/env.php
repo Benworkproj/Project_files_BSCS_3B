@@ -16,8 +16,6 @@ const REGISTER = ROOT_PATH . "/auth/register.php";
 const MAINFOODPAGE = ROOT_PATH . "/foods";
 const MAINFOODPAGE_ALT = ROOT_PATH . "/foods/main-foods.php";
 
-
-const CARTPAGE = "../../carts/index.php";
 const PAGE3 = ROOT_PATH . "/page3";
 const PAGE2 = ROOT_PATH . "/page2";
 const LOGO = ROOT_PATH."/public/assets/img/Restaurant Food.png";
@@ -32,9 +30,15 @@ const PRODUCT_PATH = [
     'list' => ROOT_PATH . "/admin/product/list",
 ];
 
+
+const CART_PATH = [
+    'list' => ROOT_PATH . "/carts",
+    'delete' => ROOT_PATH . "/carts/delete"
+];
+
+
 const SALES_PATH = [
     'index' => ROOT_PATH . "/admin/sales/",
-    'edit' => ROOT_PATH . "/admin/sales/edit",
     'delete' => ROOT_PATH . "/admin/sales/delete",
     'list' => ROOT_PATH . "/admin/sales/list",
 ];

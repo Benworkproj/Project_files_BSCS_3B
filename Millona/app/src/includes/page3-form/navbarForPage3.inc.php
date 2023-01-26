@@ -25,7 +25,7 @@
                 </div>
 
                 <div>
-                    <a class="navbar-item" href="<?= CARTPAGE ?>" target="_blank">
+                    <a class="navbar-item" href="<?= CART_PATH['list'] ?>" target="_blank">
                         Cart
                         <span><i class="fa-solid fa-cart-shopping"></i></span>
                     </a>
