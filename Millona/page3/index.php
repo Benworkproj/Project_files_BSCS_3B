@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         if (empty($error)) {
             $salesController->addSales();
 
-            $data = [];
+            $data;
             $error = [];
 
             redirect_with_params(SALES_PATH['list'], ['message' => 'Sales added successfully']);
@@ -47,9 +47,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     <!-- Navbar -->
     <?php require_once '../app/src/includes/page3-form/navbarForPage3.inc.php' ?>
 
-    <!-- header -->
     <?php require_once '../app/src/includes/page3-form/form-header.inc.php' ?>
 
+    
     <?php if (isset($error['error_name'])) : ?>
         <div class="notification is-danger">
             <button class="delete"></button>

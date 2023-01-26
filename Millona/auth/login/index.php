@@ -2,10 +2,10 @@
 
 session_start();
 
-require_once '../app/config/env.php';
-require_once '../app/src/auth/UserController.class.php';
-require_once '../app/config/assets_path.php';
-require_once '../app/core/Redirect.php';
+require_once '../../app/config/env.php';
+require_once '../../app/src/auth/UserController.class.php';
+require_once '../../app/config/assets_path.php';
+require_once '../../app/core/Redirect.php';
 
 redirect_all();
 
@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
 <?php ?>
 
 
-<?php require_once '../app/src/includes/auth/header.inc.php' ?>
+<?php require_once '../../app/src/includes/auth/header.inc.php' ?>
 
 <div class="center">
     <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
@@ -44,14 +44,14 @@ if (isset($_POST['submit'])) {
         <?php endif ?>
 
         <div class="txt_field">
-            
+
             <input type="text" name="<?= USERNAME[0] ?>" required autocomplete="off" value="">
 
             <span></span>
             <label><?= USERNAME[1] ?></label>
 
             <!-- echo the username in the input value to stick it even if page reload -->
-       
+
         </div>
 
         <div class="txt_field">
@@ -70,4 +70,4 @@ if (isset($_POST['submit'])) {
     </form>
 </div>
 
-<?php require_once '../app/src/includes/auth/footer.inc.php' ?>
+<?php require_once '../../app/src/includes/auth/footer.inc.php' ?>

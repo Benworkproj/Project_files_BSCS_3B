@@ -10,7 +10,7 @@ const DB_PASSWORD = '';
 const ROOT_PATH = "/Millona";
 
 const LOGOUT = ROOT_PATH . "/auth/logout.php";
-const LOGIN = ROOT_PATH . "/auth/login.php";
+const LOGIN = ROOT_PATH . "/auth/login/";
 const REGISTER = ROOT_PATH . "/auth/register.php";
 
 const MAINFOODPAGE = ROOT_PATH . "/foods";

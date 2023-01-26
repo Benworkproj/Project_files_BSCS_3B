@@ -186,7 +186,7 @@ class DashboardController
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="col-lg-3 col-md-6 col-sm-4">
                     <div class="card card-stats">
                         <div class="card-body ">
                             <div class="row">
@@ -213,6 +213,11 @@ class DashboardController
                                 <i class="fa-solid fa-share"></i>
                                 View
                             </a>
+
+                            <a href="<?= PAGE3 ?>" class="btn rounded-5">
+                                <i class="fa-solid fa-plus"></i>
+                                Add
+                            </a>
                             <!-- <a href=" ?>" class="btn rounded-5">
                                 <i class="fa-solid fa-plus"></i>
                                 Add
@@ -220,7 +225,7 @@ class DashboardController
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="col-lg-3 col-md-6 col-sm-3">
                     <div class="card card-stats">
                         <div class="card-body ">
                             <div class="row">
@@ -233,7 +238,7 @@ class DashboardController
                                     <div class="numbers">
                                         <p class="very-small-text">Total Employees</p>
                                         <p class="fs-5">
-                                           # <?= DashboardController::countEmployees() ?>
+                                            # <?= DashboardController::countEmployees() ?>
                                         <p>
                                     </div>
                                 </div>
@@ -247,8 +252,8 @@ class DashboardController
                                 View
                             </a>
                             <a href="<?= PAGE2 ?>" class=" btn rounded-5 col">
-                                <i class="fa-solid fa-share small"></i>
-                                Add +
+                                <i class="fa-solid fa-plus"></i>
+                                Add
                             </a>
                         </div>
                     </div>
@@ -283,8 +288,8 @@ class DashboardController
                                 View
                             </a>
                             <a href="<?= PRODUCT_PATH['create'] ?>" class=" btn rounded-5 col">
-                                <i class="fa-solid fa-share small"></i>
-                                Add +
+                                <i class="fa-solid fa-plus"></i>
+                                Add
                             </a>
                         </div>
                     </div>

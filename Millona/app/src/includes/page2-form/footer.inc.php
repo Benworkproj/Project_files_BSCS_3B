@@ -6,12 +6,6 @@
 <!-- Alertify JS -->
 <script defer src="https://cdn.jsdelivr.net/npm/alertifyjs"></script>
 
-<script defer src="<?= JS_ASSETS_PATH ?>/utils/showNotification.js"></script>
-<script defer src="<?= JS_ASSETS_PATH ?>/utils/bindDataToInput.js"></script>
-<script defer src="<?= JS_ASSETS_PATH ?>/calculatorFunctions.js"></script>
-<script defer src="<?= JS_ASSETS_PATH ?>/selectBtn.js"></script>
-<script defer src="<?= JS_ASSETS_PATH ?>/addToCart.js"></script>
-
 </body>
 
 </html>
