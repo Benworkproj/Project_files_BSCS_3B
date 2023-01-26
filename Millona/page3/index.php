@@ -16,30 +16,32 @@ require_once '../app/src/sales/SalesController.class.php';
 $title = 'Page 3 Form';
 $error = [];
 $data = [];
-
-if (isset($_POST['new'])) {
-
-$error = [];
+if ($_SERVER['REQUEST_METHOD'] === 'POST')
+{
     $data = $_POST;
 
-    $salesController = new SalesController($data);
+    if (isset($_POST['new'])) {
 
-    $error = $salesController->validateSalesData();
+        $salesController = new SalesController($data);
 
-    
-    if (empty($error)) {
-        $salesController->addSales();
+        $error = $salesController->validateSalesData();
 
-        $data = [];
-        $error = [];
 
-        redirect_with_params(SALES_PATH['list'], ['success' => 'Sales added successfully']);
+        if (empty($error)) {
+            $salesController->addSales();
+
+            $data = [];
+            $error = [];
+
+            redirect_with_params(SALES_PATH['list'], ['message' => 'Sales added successfully']);
+        }
+
+        echo '<pre>';
+        print_r($data);
+        echo '</pre>';
     }
-
-    echo '<pre>';
-    print_r($data);
-    echo '</pre>';
 }
+
 
 ?>
 

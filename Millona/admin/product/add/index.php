@@ -7,15 +7,7 @@ require_once '../../../app/core/Redirect.php';
 
 redirect_not_authenticated_user($_SESSION['user'], LOGIN);
 
-if (isset($_SESSION['user'])) {
-    if ($_SESSION['user']['user_level'] === '0') {
-        header('Location:' . PAGE3);
-    } else if ($_SESSION['user']['user_level'] === '2') {
-        header('Location:' . PAGE2);
-    }
-}
-
-
+redirect_not_admin();
 
 require_once '../../../app/libs/Image.php';
 require_once '../../../app/src/products/ProductsController.class.php';

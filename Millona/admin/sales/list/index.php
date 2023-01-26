@@ -128,6 +128,10 @@ $sales = SalesController::getAllSales();
                                                 Delete
                                             </a>
                                         </td>
+
+                                        <td class="text-dark">
+                                            <?= $row['date_created'] ?>
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

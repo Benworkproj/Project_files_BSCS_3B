@@ -3,7 +3,7 @@
 require_once __DIR__ .  "../../../config/env.php";
 require_once __DIR__ .  "../../../core/Model.php";
 require_once __DIR__ .  "../../../core/Redirect.php";
-
+require_once __DIR__ .  "../../../libs/Helpers.php";
 
 class UserController
 {
@@ -11,6 +11,8 @@ class UserController
     private $username;
     private $user_password;
     private $confirm_password;
+    private $user_lvl;
+    private $user_level_option = ['0', '1', '2', '3'];
     private $errors = [];
 
     public function __construct($username, $user_password)
@@ -45,6 +47,25 @@ class UserController
     {
         return $user['user_level'] === '3';
     }
+
+
+    public function saveUser()
+    {
+        $hashed_password = $this->hashPassword($this->user_password);
+
+        // insert user to database
+        $userInsert = insertUser2($this->username, $hashed_password, $this->user_lvl);
+
+        // check if user is inserted
+        if ($userInsert) {
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
+
 
     public function login()
     {
@@ -142,6 +163,25 @@ class UserController
 
     // ------------------------FORM VALIDATION------------------------ //
 
+    // validate user creation form in admin panel
+    public function validateUserAccountInAdminForm()
+    {
+        if ($this->isConfirmPasswordEmpty()) {
+            $this->addError('confirm_password', "Confirm password is required");
+        } else if (!$this->isPasswordMatch()) {
+            $this->addError('confirm_password', "Password and confirm password do not match");
+        } else if ($this->isUserNameExists($this->username)) {
+            $this->addError('username', "Username already exists");
+        } 
+
+        $this->validateUserName();
+        $this->validatePassword();
+        $this->validateUserLevel();
+
+        // return the errors
+        return $this->errors;
+    }
+
 
     // FORM VALIDATION FOR LOGIN
     public function validateLoginForm()
@@ -177,6 +217,18 @@ class UserController
         return $this->errors;
     }
 
+    private function validateUserLevel()
+    {
+        $user_lvl = $this->getUserLevel();
+        // sanitize user_level
+        $user_lvl = Helpers::sanitize($user_lvl);
+
+        // if not in the array
+        if (!in_array($user_lvl, $this->user_level_option)) {
+            $this->addError('user_level', "User level is invalid");
+        }
+
+    }
 
     // validate username
     private function validateUserName()
@@ -207,7 +259,7 @@ class UserController
 
         // check if password contains at least one number, one uppercase and one lowercase letter
         if (!preg_match("#[0-9]+#", $user_password)) {
-            $this->addError('user_password', "must contain at least one number, one uppercase and one lowercase letter");
+            $this->addError('user_password', "password must contain at least one number, one uppercase and one lowercase letter");
         } 
         else if (strlen($user_password) < 8) {
             $this->addError('user_password', "Password must be at least 8 characters");
@@ -222,6 +274,15 @@ class UserController
 
 
     // ----------- USERNAME RELATED FUNCTIONS ---------------------
+    public function setUserLevel($user_lvl)
+    {
+        $this->user_lvl = $user_lvl;
+    }
+
+    private function getUserLevel()
+    {
+        return $this->user_lvl;
+    }
 
     private function isUserNameEmpty()
     {

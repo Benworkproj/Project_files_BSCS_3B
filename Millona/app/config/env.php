@@ -11,6 +11,8 @@ const ROOT_PATH = "/Millona";
 
 const LOGOUT = ROOT_PATH . "/auth/logout.php";
 const LOGIN = ROOT_PATH . "/auth/login.php";
+const REGISTER = ROOT_PATH . "/auth/register.php";
+
 const MAINFOODPAGE = ROOT_PATH . "/foods";
 const MAINFOODPAGE_ALT = ROOT_PATH . "/foods/main-foods.php";
 
@@ -42,6 +44,14 @@ const EMPLOYEE_PATH = [
     'edit' => ROOT_PATH . "/admin/employee/edit",
     'delete' => ROOT_PATH . "/admin/employee/delete",
     'list' => ROOT_PATH . "/admin/employee/list",
+];
+
+const ACCOUNTS_PATH = [
+    'index' => ROOT_PATH . "/admin/accounts/",
+    'edit' => ROOT_PATH . "/admin/accounts/edit",
+    'delete' => ROOT_PATH . "/admin/accounts/delete",
+    'list' => ROOT_PATH . "/admin/accounts/list",
+    'create' => ROOT_PATH . "/admin/accounts/create",
 ];
 
 

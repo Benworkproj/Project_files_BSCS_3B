@@ -28,7 +28,7 @@ $row = $result->fetch_assoc();
 unlink('../../../public/uploads/emp_img/' . $row['emp_img']); 
 
 // sql query
-$sql = "DELETE FROM employee_tbl WHERE emp_id = '?'";
+$sql = "DELETE FROM employee_tbl WHERE emp_id = ?";
 
 // prepare the statement
 $stmt = $conn->prepare($sql);

@@ -144,7 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (isset($_POST['back'])) {
-        redirect_with_params(EMPLOYEE_PATH['list'] . '/', ['message' => '', 'alert' => 'success']);
+        redirect_with_params(EMPLOYEE_PATH['list'] . '/', ['message' => '']);
     }
 }
 

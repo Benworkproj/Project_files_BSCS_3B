@@ -130,5 +130,17 @@ class SalesController
         return $sales;
     }
 
+    public static function removeSales($key, $value)
+    {
+        $model = new BaseSales();
+        $removeSales = $model->removeSales($key, $value);
+
+        if ($removeSales) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
 }

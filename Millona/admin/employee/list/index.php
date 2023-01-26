@@ -50,7 +50,7 @@ $employees = $employeeController->getAllEmployee();
                         <div class="row">
                             <div class="col-12">
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    <strong> <?= $message ?>!</strong>
+                                    <strong> <?= $_GET['message'] ?></strong>
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                             </div>
@@ -66,7 +66,7 @@ $employees = $employeeController->getAllEmployee();
                 <div class="row justify-content-center">
                     <div class="col-12">
                         <div class="table-responsive bg-white" data-mdb-perfect-scrollbar="true" style="position: relative; width: auto;">
-                            <table class="table">
+                            <table class="table bg-light">
                                 <thead>
                                     <tr>
                                         <th scope="col">EMPLOYEES</th>
@@ -104,12 +104,12 @@ $employees = $employeeController->getAllEmployee();
 
                                                 <!-- Emp statuses  -->
                                                 <td>
-                                                    <p class="fw-normal mb-1">
+                                                    <p class="fw-normal mb-1 text-info">
                                                         Civil Status:
                                                         <span class="text-danger"><?= strtoupper($employee['emp_civil_status']) ?>
                                                         </span>
                                                     </p>
-                                                    <p class="fw-normal mb-1">
+                                                    <p class="fw-normal text-info mb-1">
                                                         Employee Position:
                                                         <span class="text-dark">
                                                             <?= strtoupper($employee['emp_status']) ?>
@@ -119,20 +119,20 @@ $employees = $employeeController->getAllEmployee();
 
                                                 <!-- Emp DESIGNATION -->
                                                 <td>
-                                                    <span class="badge badge-success rounded-pill d-inline">
+                                                    <span class="badge badge-success rounded-pill d-inline text-dark">
                                                         <?= $employee['designation'] ?>
                                                     </span>
                                                 </td>
 
                                                 <td>
                                                     <p class="text-muted mb-0">
-                                                        <?= $employee['department'] ?> Department
+                                                        <?= strtoupper($employee['department']) ?> Department
                                                     </p>
                                                 </td>
 
                                                 <!-- Emp GROSS INCOME -->
                                                 <td>
-                                                    <span class="badge badge-info rounded-pill d-inline">
+                                                    <span class="badge badge-info rounded-pill d-inline ">
                                                         <?= $employee['gross_income'] ?>
                                                     </span>
                                                 </td>
@@ -181,46 +181,5 @@ $employees = $employeeController->getAllEmployee();
         </div>
     </div>
 </section>
-
-<!-- 
-<div class="card inner_card px-4 py-2">
-
-    <div class="div2 row py-1 px-2">
-
-        <div class="col-7 mt-2">
-            <p class="font-weight-bold mb-5 darkWhite heading"> Enjoy smart assistant around the home. </p>
-            <p class="mt-3"> June 26 - August 26 </p>
-        </div>
-
-        <div class="col-5 d-flex align-items-center">
-
-            <div class="rounded-circle d-flex align-items-center justify-content-center w-100" id="circl2">
-                <img src="https://i.imgur.com/yT8K4xZ.png" height="85%" width="40%" alt="">
-            </div>
-
-        </div>
-    </div>
-
-
-    <div class="py-2">
-        <p class="desc">
-            Choose stylish gadgets from Google at great prices. Buy goods at KTC!
-        </p>
-
-        <div class="">
-
-            <h6>
-                <a href="#"> Learn more
-                    <span class="rounded-circle sp1 px-2 py-0 ml-1">
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </span>
-                </a>
-            </h6>
-
-        </div>
-
-    </div>
-
-</div> -->
 
 <?php require_once '../../../app/src/includes/admin/footer.php'; ?>

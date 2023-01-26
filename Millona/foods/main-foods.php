@@ -19,7 +19,6 @@ $conn = DBConnection();
 // get the food items
 $sql = "SELECT * FROM main_foods_tbl";
 
-
 $stmt = $conn->query($sql);
 
 // fetch the data and return it using mysqli
@@ -44,8 +43,9 @@ CloseConnection($conn);
     <div class='grid-container'>
         
         <?php foreach ($products as $product) { ?>
-            <?php $id = $product['id'];
-            $product_name = $product['food_name'];
+            <?php 
+            $id = $product['id'];
+            $food_name = $product['food_name'];
             $price = $product['price'];
             $img = $product['img'];
             ?>

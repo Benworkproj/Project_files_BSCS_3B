@@ -1,3 +1,67 @@
+<?php
+
+require_once __DIR__ .  "../../../../config/Connection.php";
+
+// count the total users from accounts table
+
+class DashboardController
+{
+    public static function countUsers()
+    {
+        $conn = DBConnection();
+        // conut in the most efficient way
+        $users = "SELECT * FROM accounts";
+
+        // count the total users
+        $total_users = mysqli_query($conn, $users);
+        $total_users = mysqli_num_rows($total_users);
+
+        return $total_users;
+    }
+
+    public static function countProducts()
+    {
+        $conn = DBConnection();
+        // conut in the most efficient way
+        $products = "SELECT * FROM main_foods_tbl";
+
+        // count the total users
+        $total_products = mysqli_query($conn, $products);
+        $total_products = mysqli_num_rows($total_products);
+
+        return $total_products;
+    }
+
+    public static function countSales()
+    {
+        $conn = DBConnection();
+        // conut in the most efficient way
+        $sales = "SELECT * FROM sales";
+
+        // summarize the total sales
+        // total the sales
+        $total_sales = mysqli_query($conn, $sales);
+        $total_sales = mysqli_num_rows($total_sales);
+
+        return $total_sales;
+    }
+
+    public static function countEmployees()
+    {
+        $conn = DBConnection();
+        // conut in the most efficient way
+        $employees = "SELECT * FROM employee_tbl";
+
+        // count the total users
+        $total_employees = mysqli_query($conn, $employees);
+        $total_employees = mysqli_num_rows($total_employees);
+
+        return $total_employees;
+    }
+}
+
+
+?>
 <div class="wrapper admin-background">
     <div class="sidebar" data-color="white" data-active-color="danger">
         <div class="logo">
@@ -8,49 +72,49 @@
             </a>
         </div>
 
-            <div class="sidebar-wrapper">
-                <ul class="nav">
-                    <li class="active ">
-                        <a href="<?= ADMIN ?>">
-                            <!-- dashboard icon using font awesome -->
-                            <i class="fa-solid fa-universal-access"></i>
-                            <p>Dashboard</p>
-                        </a>
-                    </li>
-                    <li class="active text-danger">
-                        <a href="<?= PRODUCT_PATH['list'] ?>" class="text-info-dark">
-                            <!-- product icon -->
-                            <i class="fa-solid fa-utensils"></i>
-                            <span>Products</span>
-                        </a>
-                    </li>
-                    <li class="active text-danger">
-                        <a href="">
-                            <i class="fa-solid fa-user-tag"></i>
-                            <p>User Accounts</p>
-                        </a>
-                    </li>
-                    <li class="active text-danger">
-                        <a href="<?= EMPLOYEE_PATH['list'] ?> ">
-                            <i class="fa-solid fa-sheet-plastic"></i>
-                            <p>Employees Payroll</p>
-                        </a>
-                    </li>
-                    <li class="active text-danger">
-                        <a href="<?= SALES_PATH['list'] ?>">
-                            <i class="fa-solid fa-chart-line"></i>
-                            <p>Sales</p>
-                        </a>
-                    </li>
-                    <li class="active text-danger">
-                        <a href="<?= LOGOUT ?>" class="logout">
-                            <span class="icon is-small"><i class="fa-solid fa-sign-out"></i></span>
-                            <span>Logout</span>
-                        </a>
-                    </li>
+        <div class="sidebar-wrapper">
+            <ul class="nav">
+                <li class="active ">
+                    <a href="<?= ADMIN ?>">
+                        <!-- dashboard icon using font awesome -->
+                        <i class="fa-solid fa-universal-access"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li class="active text-danger">
+                    <a href="<?= PRODUCT_PATH['list'] ?>" class="text-info-dark">
+                        <!-- product icon -->
+                        <i class="fa-solid fa-utensils"></i>
+                        <span>Products</span>
+                    </a>
+                </li>
+                <li class="active text-danger">
+                    <a href="<?= ACCOUNTS_PATH['list'] ?>">
+                        <i class="fa-solid fa-user-tag"></i>
+                        <p>User Accounts</p>
+                    </a>
+                </li>
+                <li class="active text-danger">
+                    <a href="<?= EMPLOYEE_PATH['list'] ?> ">
+                        <i class="fa-solid fa-sheet-plastic"></i>
+                        <p>Employees Payroll</p>
+                    </a>
+                </li>
+                <li class="active text-danger">
+                    <a href="<?= SALES_PATH['list'] ?>">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <p>Sales</p>
+                    </a>
+                </li>
+                <li class="active text-danger">
+                    <a href="<?= LOGOUT ?>" class="logout">
+                        <span class="icon is-small"><i class="fa-solid fa-sign-out"></i></span>
+                        <span>Logout</span>
+                    </a>
+                </li>
 
-                </ul>
-            </div>
+            </ul>
+        </div>
     </div>
 
     <div class="main-panel">
@@ -103,7 +167,7 @@
                                     <div class="numbers">
                                         <p class="fs-6 text-success-emphasis">Total Users</p>
                                         <p class="fs-3">
-                                            1,345
+                                            #<?= DashboardController::countUsers() ?>
                                         <p>
                                     </div>
                                 </div>
@@ -111,9 +175,13 @@
                         </div>
                         <div class="card-footer ">
                             <hr>
-                            <a class="btn rounded-5">
+                            <a href="<?= ACCOUNTS_PATH['list'] ?>" class="btn rounded-5">
                                 <i class="fa-solid fa-share"></i>
                                 View
+                            </a>
+                            <a href="<?= ACCOUNTS_PATH['create'] ?>" class="btn rounded-5">
+                                <i class="fa-solid fa-plus"></i>
+                                Add
                             </a>
                         </div>
                     </div>
@@ -129,9 +197,9 @@
                                 </div>
                                 <div class="col-7 col-md-8">
                                     <div class="numbers">
-                                        <p class="fs-6 text-info-emphasis">Total Sales</p>
+                                        <p class="fs-6 text-info-emphasis">Total Number of Created Sales</p>
                                         <p class="fs-5">
-                                            <span class="fs-6">PHP</span> 500
+                                            # <?= DashboardController::countSales() ?>
                                         <p>
                                     </div>
                                 </div>
@@ -145,6 +213,10 @@
                                 <i class="fa-solid fa-share"></i>
                                 View
                             </a>
+                            <!-- <a href=" ?>" class="btn rounded-5">
+                                <i class="fa-solid fa-plus"></i>
+                                Add
+                            </a> -->
                         </div>
                     </div>
                 </div>
@@ -160,7 +232,8 @@
                                 <div class="col-7 col-md-8">
                                     <div class="numbers">
                                         <p class="very-small-text">Total Employees</p>
-                                        <p class="fs-5">23
+                                        <p class="fs-5">
+                                           # <?= DashboardController::countEmployees() ?>
                                         <p>
                                     </div>
                                 </div>
@@ -191,8 +264,11 @@
                                 </div>
                                 <div class="col-7 col-md-8">
                                     <div class="numbers">
-                                        <p class="very-small-text">Total Products</p>
-                                        <p class="fs-5">23
+                                        <p class="very-small-text">
+                                            Total Products
+                                        </p>
+                                        <p class="fs-5">
+                                            #<?= DashboardController::countProducts() ?>
                                         <p>
                                     </div>
                                 </div>

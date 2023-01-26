@@ -17,6 +17,21 @@ function insertUser($username, $user_password)
     }
 }
 
+function insertUser2($username, $user_password, $user_lvl)
+{
+    $sql = "INSERT INTO accounts (username, user_password, user_level) VALUES ('$username', '$user_password', '$user_lvl')";
+    
+    $conn = DBConnection();
+
+    $stmt = $conn->query($sql);
+
+    if ($stmt) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 // this is the function that will be used to get the user from the database and return it as an array to access its data or fields
 function getUser($username)
@@ -34,6 +49,19 @@ function getUser($username)
     else{
         return false;
     }
+}
+
+function getUsers()
+{
+    $sql = 'SELECT * FROM accounts';
+
+    $conn = DBConnection();
+    $stmt = $conn->query($sql);
+
+    $users = $stmt->fetch_all(MYSQLI_ASSOC);
+
+    return $users;
+
 }
 
 
@@ -197,6 +225,19 @@ class BaseSales{
         $sales = $stmt->fetch_all(MYSQLI_ASSOC);
 
         return $sales;
+    }
+
+    public function removeSales($key, $value)
+    {
+        $sql = "DELETE FROM sales WHERE $key = '$value'";
+        
+        $stmt = $this->conn->query($sql);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
