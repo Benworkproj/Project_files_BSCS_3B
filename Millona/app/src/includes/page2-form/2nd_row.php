@@ -11,7 +11,8 @@
                    Rate / Hour</label>
                <div class="col-sm-4">
 
-                   <input type="number" class="form-control" id="BasicPay1" name="basicPay_rate_per_hr" value="<?= $data['basicPay_rate_per_hr'] ?? 0 ?>" >
+                   <input type="number" class="form-control" id="BasicPay1" name="basicPay_rate_per_hr" 
+                   value="<?= $emp['basicPay_rate_per_hr'] ?? 0 ?>">
 
                </div>
            </div>
@@ -24,7 +25,8 @@
                </label>
                <div class="col-sm-4">
 
-                   <input type="number" class="form-control" id="BasicPay2" name="basicPay_num_of_hrs_per_cutOff" value="<?= $data['basicPay_num_of_hrs_per_cutOff'] ?? 0?>">
+                   <input type="number" class="form-control" id="BasicPay2" name="basicPay_hrs_per_cutOff" 
+                   value="<?= $emp['basicPay_hrs_per_cutOff'] ?? 0 ?>">
 
                </div>
            </div>
@@ -37,9 +39,10 @@
                </label>
 
                <div class="col-sm-4">
-                   <input type="number" class="form-control" id="BasicPay3" name="basicPay_income_per_cutOff" value="<?= $data['basicPay_income_per_cutOff'] ?? 0 ?>" readonly>
+                   <input type="number" 
+                   class="form-control" id="BasicPay3" name="total_basicpay" 
+                   value="<?= $emp['total_basicpay'] ?? 0 ?>" readonly>
                </div>
-
            </div>
        </div>
 
@@ -52,7 +55,7 @@
                <label for="RegularDeduction1" class="col-md-6 col-form-label">SSS Contribution</label>
 
                <div class="col-sm-4">
-                   <input type="number" class="form-control" value="<?= $data['sss'] ?? 0 ?>" id="RegularDeduction1" name="sss" readonly>
+                   <input type="number" class="form-control" value="<?= $emp['sss_contrib'] ?? 0 ?>" id="RegularDeduction1" name="sss_contrib" readonly>
                </div>
 
            </div>
@@ -63,7 +66,7 @@
                <label for="RegularDeduction2" class="col-md-6 col-form-label"> PhilHealth Contribution
                </label>
                <div class="col-sm-4">
-                   <input type="number" class="form-control" id="RegularDeduction2" value="<?= $data['phil_health'] ?? 0?>" name="phil_health" readonly>
+                   <input type="number" class="form-control" id="RegularDeduction2" value="<?= $emp['phil_health_contrib'] ?? 0 ?>" name="phil_health_contrib" readonly>
                </div>
            </div>
 
@@ -73,18 +76,18 @@
                <label for="RegularDeduction3" class="col-md-6 col-form-label"> Pag-Ibig Contribution</label>
 
                <div class="col-sm-4">
-                   <input name="pag-ibig" type="number" class="form-control" value="<?= $data['pag-ibig'] ?? 100 ?>" id="RegularDeduction3" readonly>
+                   <input name="pag_ibig_contrib" type="number" class="form-control" value="<?= $emp['pag_ibig_contrib'] ?? 100 ?>" id="RegularDeduction3" readonly>
                </div>
 
            </div>
 
            <br>
            <div class="row md-4">
-               <label for="RegularDeduction4" class="col-md-6 col-form-label">  
-                    Income Tax Contribution 
+               <label for="RegularDeduction4" class="col-md-6 col-form-label">
+                   Income Tax Contribution
                </label>
                <div class="col-sm-4">
-                   <input type="number" class="form-control" id="RegularDeduction4" value="<?= $data['tax_value'] ?? 0?>" name="tax_value" readonly>
+                   <input type="number" class="form-control" id="RegularDeduction4" value="<?= $emp['tax_val'] ?? 0 ?>" name="tax_val" readonly>
                </div>
            </div>
        </div>

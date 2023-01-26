@@ -66,14 +66,15 @@ class EmployeeController
     public function validateData($data)
     {
         $exception_keys = [
-            'employee_id',
+            'emp_id',
             'new',
-            'cancel',
+            'clear',
+            'save',
             'calculate',
-            'basicPay_income_per_cutOff',
-            'sss',
-            'phil_health',
-            'tax_value',
+            'total_basicpay',
+            'sss_contrib',
+            'phil_health_contrib',
+            'tax_val',
             'total_hono_pay',
             'total_other_income_pay',
             'gross_income',
@@ -191,6 +192,8 @@ class EmployeeController
     }
 
 
+
+
     // -----------------  CRUD -----------------
     public function addEmployee($data)
     {
@@ -219,6 +222,47 @@ class EmployeeController
             return false;
         }
     }
+
+
+    public function updateEmployee($data)
+    {
+        $validateData = $this->validateData($data);
+        if (empty($validateData)) {
+            $updateEmployee = $this->model->updateEmployee($data);
+            if ($updateEmployee) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return $validateData;
+        }
+    }
+
+    public function getAllEmployee()
+    {
+        $getAllEmployee = $this->model->getAllEmp();
+        
+        return $getAllEmployee;
+    }
+
+
+    public function getEmployee($employee_id)
+    {
+        $employee_id = Helpers::sanitize($employee_id);
+        $getEmployee = $this->model->getEmp('emp_id', $employee_id);
+
+        return $getEmployee;
+    }
+
+    // select all the fields from the employee table
+    public function getEmployeeFields()
+    {
+        $getEmployeeFields = $this->model->getEmpFields();
+
+        return $getEmployeeFields;
+    }
+
     
 
 }

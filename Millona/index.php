@@ -8,6 +8,7 @@ require_once './app/core/Redirect.php';
 
 if (isset($_SESSION['user'])) {
 
+    // get the current webiste url
     switch ($_SESSION['user']['user_level']) {
         case '0':
             header('Location: '. PAGE3);
@@ -16,7 +17,7 @@ if (isset($_SESSION['user'])) {
             header('Location: '. ADMIN);
             break;
         case '2':
-            header('Location: .' .PAGE2);
+            header('Location: ' . PAGE2);
             break;
     }
 

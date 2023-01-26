@@ -11,7 +11,6 @@ redirect_not_authenticated_user($_SESSION['user'], LOGIN);
 
 redirect_auth_user_level($_SESSION['user']['user_level'], 2, PAGE2);
 
-
 require_once '../app/config/Connection.php';
 
 // get the connection

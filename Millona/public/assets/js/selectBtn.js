@@ -14,7 +14,7 @@ $(document).ready(function () {
         sessionStorage.setItem("price", price);
         sessionStorage.setItem("foodName", foodNameTrim);
 
-        location.href = "/foodhouse/page3/form";
+        location.href = "/Millona/page3";
       }, 1000);
     },
   });

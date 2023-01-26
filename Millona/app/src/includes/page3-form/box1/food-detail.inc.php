@@ -3,7 +3,7 @@
     <div class="field-body">
         <div class="field">
             <p class="control is-expanded has-icons-left">
-                <input id="foodName" class="input is-rounded" type="text" placeholder="food name" name="foodName" readonly>
+                <input id="foodName" class="input is-rounded" type="text" placeholder="food name" name="item_name" readonly>
                 <span class="icon is-left">
                     <i class="fa-solid fa-bowl-food"></i>
                 </span>
@@ -13,7 +13,7 @@
 
         <div class="field">
             <p class="control is-expanded has-icons-left">
-                <input id="quantityOfOrder" name="quantityOfOrder" class="input is-rounded" type="number" placeholder="quantity">
+                <input id="quantityOfOrder" name="quantity" class="input is-rounded" type="number" placeholder="quantity">
                 <span class="icon is-left">
                     <i class="fa-solid fa-hashtag"></i>
                 </span>
@@ -23,7 +23,7 @@
 
         <div class="field">
             <p class="control is-expanded has-icons-left">
-                <input id="foodPrice" name="foodPrice" class="input is-rounded" type="number" placeholder="price" readonly>
+                <input id="foodPrice" name="item_price" class="input is-rounded" type="number" placeholder="price" readonly>
                 <span class="icon is-left">
                     <i class="fa-solid fa-peso-sign"></i>
                 </span>

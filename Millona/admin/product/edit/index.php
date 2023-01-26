@@ -13,7 +13,7 @@ $id = $_GET['id'];
 
 // validate the id
 if (!is_numeric($id)) {
-    header('location: /foodhouse/admin/product/list');
+    header('location: '. PRODUCT_PATH['list']);
 }
 
 require_once '../../../app/config/Connection.php';
@@ -52,18 +52,6 @@ if (isset($_POST['submit'])) {
     // validate form data
     $errors = [];
 
-    // if (empty($product_name)) {
-    //     $errors['error_name'] = 'Product name is required';
-    // }
-
-    // if (empty($product_price)) {
-    //     $errors['error_name'] = 'Product price is required';
-    // }
-
-    // if (empty($product_img)) {
-    //     $errors['error_name'] = 'Product image is required';
-    // }
-
     $file_ext = explode('.', $img_name);
     $actualExt = strtolower(end($file_ext));
 
@@ -96,6 +84,7 @@ if (isset($_POST['submit'])) {
 
                 // redirect to the list page
                 header('location: '. PRODUCT_PATH['list']);
+                
             } else {
                 $errors['error_img'] = 'Image size is too big';
             }

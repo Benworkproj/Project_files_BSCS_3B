@@ -54,6 +54,13 @@ function redirect_auth_user_level($field, $user_level, $path)
 
 }
 
+function redirect_with_params($path, $params)
+{
+    $url = $path . '?' . http_build_query($params);
+    header('Location: ' . $url);
+}
+
+
 function redirect_not_admin()
 {
 

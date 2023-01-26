@@ -14,54 +14,31 @@ redirect_hr_accoutant();
 require_once '../app/src/sales/SalesController.class.php';
 
 $title = 'Page 3 Form';
+$error = [];
+$data = [];
 
+if (isset($_POST['new'])) {
 
-if (isset($_POST['submit'])) {
-
-    /* 
-    Form values: 
-        foodName
-        quantityOfOrder
-        foodPrice
-
-        discountAmount
-        discountedAmount
-
-        totalQuantity
-        totalDiscountedGiven
-        totalDiscountedAmount
-
-        changeValue
-    */
-    $data = [
-        'foodName' => $_POST['foodName'],
-        'quantityOfOrder' => $_POST['quantityOfOrder'],
-        'foodPrice' => $_POST['foodPrice'],
-
-        'discountAmount' => $_POST['discountAmount'],
-        'discountedAmount' => $_POST['discountedAmount'],
-
-        'totalQuantity' => $_POST['totalQuantity'],
-        'totalDiscountedGiven' => $_POST['totalDiscountedGiven'],
-        'totalDiscountedAmount' => $_POST['totalDiscountedAmount'],
-
-        'cashValue' => $_POST['cashValue'],
-        'changeValue' => $_POST['changeValue'],
-    ];
-
+$error = [];
+    $data = $_POST;
 
     $salesController = new SalesController($data);
 
     $error = $salesController->validateSalesData();
 
+    
     if (empty($error)) {
         $salesController->addSales();
 
-        // empty the foodname value and food price
-        $_POST['foodName'] = '';
-        $_POST['foodPrice'] = '';
+        $data = [];
+        $error = [];
+
+        redirect_with_params(SALES_PATH['list'], ['success' => 'Sales added successfully']);
     }
 
+    echo '<pre>';
+    print_r($data);
+    echo '</pre>';
 }
 
 ?>
@@ -86,10 +63,10 @@ if (isset($_POST['submit'])) {
         <div class="column">
             <div class="content ">
                 <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]); ?>"  id="form" class="mr-3" method='POST'>
-
                     <!-- form body -->
                     <?php require_once '../app/src/includes/page3-form/form-body.inc.php' ?>
 
+                    <!-- the new button is the submit button -->
                 </form>
             </div>
         </div>

@@ -9,7 +9,7 @@
             </label>
 
             <div class="col-sm-4">
-                <input name="gross_income" type="number" class="form-control" id="IncomeSummary1" value="<?= $data['gross_income'] ?? 0.00 ?>" readonly>
+                <input name="gross_income" type="number" class="form-control" id="IncomeSummary1" value="<?= $emp['gross_income'] ?? 0.00 ?>" readonly>
             </div>
         </div>
 
@@ -21,7 +21,7 @@
             </label>
 
             <div class="col-sm-4">
-                <input name="net_income" type="number" class="form-control" id="IncomeSummary2" value="<?= $data['net_income'] ?? 0.00 ?>" readonly>
+                <input name="net_income" type="number" class="form-control" id="IncomeSummary2" value="<?= $emp['net_income'] ?? 0.00 ?>" readonly>
             </div>
         </div>
     </div>
@@ -36,13 +36,13 @@
             </label>
 
             <div class="col-sm-4">
-                <input name="total_deduction" type="number" class="form-control" id="Deduction1" value="<?= $data['total_deduction'] ?? 0.00 ?>" readonly>
+                <input name="total_deduction" type="number" class="form-control" id="Deduction1" value="<?= $emp['total_deduction'] ?? 0.00 ?>" readonly>
             </div>
         </div>
 
         <div id="file-js-example" class="file has-name is-danger is-boxed">
             <label class="file-label py-3">
-                <input class="file-input" type="file" id="employee_img" name="employee_img" required>
+                <input class="file-input" type="file" id="emp_img" name="emp_img">
 
                 <span class="file-cta">
                     <span class="file-icon">
@@ -53,7 +53,7 @@
                     </span>
                 </span>
                 <span class="file-name">
-                    No file uploaded
+                    <?= $emp['emp_img']['name'] ?? 'No File Uploaded' ?>
                 </span>
             </label>
         </div>

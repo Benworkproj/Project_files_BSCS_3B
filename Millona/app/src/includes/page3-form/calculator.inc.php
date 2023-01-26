@@ -3,7 +3,7 @@
 
     <p id="cashInput" class="control is-expanded has-icons-left">
 
-        <input class="input is-rounded" name="cashValue" id='cashValue' type="number" placeholder=" Enter your cash ">
+        <input class="input is-rounded" name="cash_value" id='cashValue' type="number" placeholder=" Enter your cash ">
         <span class="icon is-left">
             <i class="fa-solidfa-coins"></i>
         </span>
@@ -76,7 +76,7 @@
             </button>
         </p>
         <p class="control">
-            <button type="submit" name="submit" class=" button is-primary
+            <button type="submit" name="new" class=" button is-primary
                     is-normal is-responsive">
                 <span class="icon">
                     <i class="fa-solid fa-plus"></i>

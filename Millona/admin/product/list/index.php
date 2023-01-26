@@ -20,7 +20,7 @@ if (isset($_SESSION['user'])) {
 require_once '../../../app/config/Connection.php';
 
 
-$title = "| Product List";
+$title = "Product List";
 
 // display all products
 
@@ -59,7 +59,6 @@ $result = $conn->query($sql);
                 <div class="card-header">
                     <h4 class="card-title text-center">Product List</h4>
                 </div>
-
                 <!-- add product page -->
                 <div class="card-body">
                     <a href="<?= PRODUCT_PATH['create'] ?>" class="btn btn-primary btn-sm">Add Product</a>

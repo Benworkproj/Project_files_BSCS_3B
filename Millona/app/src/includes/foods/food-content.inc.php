@@ -1,7 +1,7 @@
 <div id="child<?= $id ?>" class="child-grid">
 
     <figure>
-        <img src="/foodhouse/public/uploads/<?= $img ?>" class="is-rounded" alt="main food item">
+        <img src="<?=UPLOADS_PATH?>/<?= $img ?>" class="is-rounded" alt="main food item">
     </figure>
 
     <div id="" class="grid-footer selectBtn">

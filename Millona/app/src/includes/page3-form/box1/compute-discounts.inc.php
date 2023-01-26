@@ -4,7 +4,7 @@
             <label class="label is-capitalized">discount Amount</label>
             <p class="control has-icons-left">
 
-                <input id="discountAmount" name="discountAmount" class="input is-rounded" type="number" placeholder="0.00" readonly>
+                <input id="discountAmount" name="discount_amount" class="input is-rounded" type="number" placeholder="0.00" readonly>
                 <span class="icon is-left">
                     <i class="fa-solid fa-arrow-down-short-wide"></i>
                 </span>
@@ -14,9 +14,9 @@
         </div>
 
         <div class="field">
-            <label class="label is-capitalized">discounted Amount</label>
+            <label class="label is-capitalized" for="discounted_amount">discounted Amount</label>
             <p class="control has-icons-left">
-                <input id="discountedAmount" name="discountedAmount" class="input is-rounded" type="number" placeholder="0.00" readonly>
+                <input id="discountedAmount" name="discounted_amount" class="input is-rounded" type="number" placeholder="0.00" readonly>
                 <span class="icon is-left">
                     <i class="fa-solid fa-tag"></i>
                 </span>

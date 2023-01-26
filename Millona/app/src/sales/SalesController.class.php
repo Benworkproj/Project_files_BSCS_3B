@@ -11,6 +11,7 @@ class SalesController
     private $model;
     private $error = [];
     private $data;
+    private $exception_keys = ['new'];
 
     public function __construct($data)
     {
@@ -20,10 +21,40 @@ class SalesController
 
 
     public function validateSalesData(){
-        
-        $this->isDataEmpty();
+
+        $sanitizedData = $this->sanitizeSalesData($this->data);
+
+        foreach ($sanitizedData as $key => $value) {
+            if (in_array($key, $this->exception_keys)) {
+                continue;
+            }
+
+            elseif (is_numeric($value)) {
+                if (!is_numeric($value)) {
+                    $this->error['error_name'] = ' $key field must be numeric';
+                }
+
+                // empty
+                if (empty($value)) {
+                    $this->error['error_name'] = ' $key field are required';
+                }
+
+                elseif ($value < 0) {
+                    $this->error['error_name'] = ' $key field must be greater than 0';
+                }
+            }
+
+            elseif (is_string($value)) {
+                // if empty
+                if (empty($value)) {
+                    $this->error['error_name'] = '$key field are required';
+                }
+            }
+
+        }
+
         // check if the cashvalue is less than the total amount
-        if ($this->data['cashValue'] < $this->data['totalDiscountedGiven']) {
+        if ($this->data['cash_value'] < $this->data['totalDiscountedGiven']) {
             $this->error['error_name'] = 'Cash value is less than the total amount';
         }
 
@@ -33,7 +64,7 @@ class SalesController
 
     public function addSales()
     {
-        $data = $this->sanitizeSalesData();
+        $data = $this->sanitizeSalesData($this->data);
 
         /* 
         the reason why we can access the data is because we are returning the data from the sanitizeSalesData() method.... ALWAYS REMBERED THIS..
@@ -70,15 +101,34 @@ class SalesController
     }
 
 
-    private function sanitizeSalesData()
+    private function sanitizeSalesData($data)
     {
-
-        $data = $this->data;
         // loop through the data and sanitize it
         foreach ($data as $key => $value) {
             $data[$key] = $this->model->getConnection()->real_escape_string($value);
         }
 
         return $data;
+
     }
+
+
+    // ------ CRUD OPERATIONS ------
+
+    // public function getAllSales()
+    // {
+    //     $sales = $this->model->getAllSales();
+
+    //     return $sales;
+    // }
+
+     public static function getAllSales()
+    {
+        $model = new BaseSales();
+        $sales = $model->getAllSales();
+
+        return $sales;
+    }
+
+
 }
