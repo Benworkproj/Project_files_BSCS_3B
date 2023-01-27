@@ -31,26 +31,25 @@ class SalesController
 
             elseif (is_numeric($value)) {
                 if (!is_numeric($value)) {
-                    $this->error['error_name'] = ' $key field must be numeric';
+                    $this->error['error_name'] = $key .' field must be numeric';
                 }
 
                 // empty
                 if (empty($value)) {
-                    $this->error['error_name'] = ' $key field are required';
+                    $this->error['error_name'] = $key .' field are required';
                 }
 
                 elseif ($value < 0) {
-                    $this->error['error_name'] = ' $key field must be greater than 0';
+                    $this->error['error_name'] = $key .' field must be greater than 0';
                 }
             }
 
             elseif (is_string($value)) {
                 // if empty
                 if (empty($value)) {
-                    $this->error['error_name'] = '$key field are required';
+                    $this->error['error_name'] = $key .' field are required';
                 }
             }
-
         }
 
         // check if the cashvalue is less than the total amount

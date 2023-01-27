@@ -11,7 +11,7 @@ redirect_not_authenticated_user($_SESSION['user'], LOGIN);
 redirect_not_admin();
 
 require_once '../../../app/core/Model.php';
-require_once '../../../app/src/auth/UserController.class.php';
+require_once '../../../app/src/auth/UserView.php';
 
 $title = 'Update User Account';
 
@@ -19,30 +19,28 @@ $title = 'Update User Account';
 $user_id = $_GET['id'];
 
 $errors = [];
-
+$user = [];
 $user = getUserById($user_id);
 
-$user_level = $user['user_level'];
+$userView = new UserView();
 
 if (isset($_POST['update'])) {
-    $username = $_POST[USERNAME[0]];
-    $user_level = $_POST['user_level'];
+    $user = $_POST;
 
-    $errors = UserController::validateUpdateUserInAdminForm($username, $user_level);
+    $userView->setData($user);
+    $errors = $userView->validateUserInAdminForm();
+
 
     if (empty($errors)) {
-        $data = [
-            'username' => $username,
-            'user_level' => $user_level,
-        ];
 
-        $updated_user = updateUser($data);
+        $updated_user = updateUser($user);
 
         if ($updated_user) {
-            $_SESSION['success'] = 'User $data["username"] account updated successfully';
+            $_SESSION['success'] = 'User '. $user['user_id']  .' account updated successfully';
             header('location: ' . ACCOUNTS_PATH['list']);
         }
     }
+
 }
 
 
@@ -116,7 +114,7 @@ if (isset($_POST['update'])) {
     }
 </style>
 
-<?php require_once '../../../app/src/includes/admin/panel.php' ?>
+<?// require_once '../../../app/src/includes/admin/panel.php' ?>
 
 <section class="vh-100" style="background-color: #eee;">
     <div class="container h-100">
@@ -129,7 +127,10 @@ if (isset($_POST['update'])) {
 
                                 <p class="text-center h4 fw-bold mb-3 mx-1 mx-md-4 mt-4">Create User Account</p>
 
-                                <form class="mx-1 mx-md-4" method="post" action="">
+                                <form class="mx-1 mx-md-4" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+
+                                    <input type="hidden" name="user_id" value="<?= $user['user_id'] ?>">
+
                                     <?php if (isset($errors['username'])) : ?>
                                         <div class="error">
                                             <?= $errors['username'] ?>
@@ -158,22 +159,22 @@ if (isset($_POST['update'])) {
                                         <i class="fa-solid  fa-person-circle-question fa-lg fa-fw me-3"></i>
                                         <div class="form-outline flex-fill mb-0">
                                             <select name="user_level" class="form-select" aria-label="Default select example">
-                                                <?php if (isset($user_level)) : ?>
-                                                    <option value="<?= $user_level ?>" selected>
-                                                        <?php if ($user_level == 0) : ?>
+                                             
+                                                    <option value="<?= $user['user_level'] ?>" selected>
+
+                                                        <?php if ($user['user_level'] == 0) : ?>
                                                             Cashier
-                                                        <?php elseif ($user_level == 1) : ?>
+                                                        <?php elseif ($user['user_level'] == 1) : ?>
                                                             Admin
-                                                        <?php elseif ($user_level == 2) : ?>
+                                                        <?php elseif ($user['user_level'] == 2) : ?>
                                                             Accounting/HR
-                                                        <?php elseif ($user_level == 3) : ?>
+                                                        <?php elseif ($user['user_level'] == 3) : ?>
                                                             Regular User
                                                             <!-- default -->
                                                         <?php else : ?>
                                                             Select User Level
                                                         <?php endif ?>
                                                     </option>
-                                                <?php endif ?>
                                                 <option value="0">Cashier</option>
                                                 <option value="1">Admin</option>
                                                 <option value="2">Accounting/HR</option>
@@ -204,7 +205,6 @@ if (isset($_POST['update'])) {
         </div>
     </div>
 </section>
-
 
 
 <?php require_once '../../../app/src/includes/admin/footer.php' ?>

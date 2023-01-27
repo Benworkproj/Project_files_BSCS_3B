@@ -186,12 +186,7 @@ class UserController
     public static function validateUpdateUserInAdminForm($data){
 
         $errors = [];
-        // sanitize every data
-        $data = array_map('trim', $data);
-        $data = array_map('htmlspecialchars', $data);
-        $data = array_map('stripslashes', $data);
 
-        // validate username
         if (!preg_match("/^[a-zA-Z0-9]*$/", $data['username'])) {
             $errors['username'] = "Username must be alphanumeric";
         } else if (strlen($data['username']) < 8) {
@@ -200,8 +195,8 @@ class UserController
             $errors['username'] = "Username is required";
         }
 
-        // validate user role
-        if (empty($data['user_level'])) {
+
+        else if (empty($data['user_level'])) {
             $errors['user_level'] = "User role is required";
         }
         elseif (in_array($data['user_level'], ['0', '1', '2', '3']) === false) {

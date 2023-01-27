@@ -33,7 +33,12 @@ $sales = SalesController::getAllSales();
                 <div class="card-header">
                     <h4 class="card-title text-center">Sales List</h4>
                 </div>
-
+                <!-- add a logout button at the end -->
+                <div class="card-body">
+                    <a href="<?= LOGOUT ?>" class="btn btn-danger btn-sm">
+                        Sign Out
+                    </a>
+                </div>
                 <!-- add product page -->
                 <div class="card-body">
                     <a href="<?= PAGE3 ?>" class="btn btn-primary btn-sm">
@@ -41,6 +46,9 @@ $sales = SalesController::getAllSales();
                         Add Sales
                     </a>
                 </div>
+
+
+
 
                 <div class="card-body">
                     <div class="table-responsive">

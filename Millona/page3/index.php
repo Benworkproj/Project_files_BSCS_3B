@@ -16,6 +16,7 @@ require_once '../app/src/sales/SalesController.class.php';
 $title = 'Page 3 Form';
 $error = [];
 $data = [];
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST')
 {
     $data = $_POST;

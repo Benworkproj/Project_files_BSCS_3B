@@ -89,7 +89,7 @@ $employees = $employeeController->getAllEmployee();
                                                 <!-- Emp basic info -->
                                                 <td>
                                                     <div class="d-flex align-items-center">
-                                                        <img src="<?= UPLOADS_PATH . '/emp_img' . '/' . $employee['emp_img'] ?>" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+                                                        <img src="<?= UPLOADS_PATH . '/emp_img' . '/' . $employee['emp_img'] ?>" alt="<?= $employee['emp_img'] ?>" style="width: 45px; height: 45px" class="rounded-circle" />
 
                                                         <div class="ms-3">
                                                             <p class="fw-bold mb-1">

@@ -80,7 +80,7 @@ if (isset($_POST['submit'])) {
         <input type="submit" name="submit" value="Register">
 
         <div class="signup_link">
-            already have an account? <a href="login.php">Login</a>
+            already have an account? <a href="<?= LOGIN ?>">Login</a>
         </div>
     </form>
 </div>

@@ -143,7 +143,7 @@ if (isset($_POST['submit'])) {
 <!-- display image with style -->
 
 <div class="card" style="width: 18rem;">
-    <img src="<?= UPLOADS_PATH . '/'. $product['img'] ?>" class="card-img-top" alt="...">
+    <img src="<?= UPLOADS_PATH . '/'. $product['img'] ?>" class="card-img-top" alt="<?= $product['food_name'] ?>">
 </div>
 
 <?php require_once '../../../app/src/includes/admin/footer.php' ?>

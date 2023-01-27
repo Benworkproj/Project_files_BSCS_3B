@@ -13,8 +13,11 @@ $(document).ready(function () {
 
         sessionStorage.setItem("price", price);
         sessionStorage.setItem("foodName", foodNameTrim);
+        
+        // redirect to page3
+        window.location.href = "/Millona/page3/";
 
-        location.href = "/Millona/page3";
+
       }, 1000);
     },
   });

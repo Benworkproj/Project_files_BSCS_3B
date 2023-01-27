@@ -14,7 +14,7 @@ const LOGIN = ROOT_PATH . "/auth/login/";
 const REGISTER = ROOT_PATH . "/auth/register.php";
 
 const MAINFOODPAGE = ROOT_PATH . "/foods";
-const MAINFOODPAGE_ALT = ROOT_PATH . "/foods/main-foods.php";
+const MAINFOODPAGE_ALT = ROOT_PATH . "/foods";
 
 const PAGE3 = ROOT_PATH . "/page3";
 const PAGE2 = ROOT_PATH . "/page2";

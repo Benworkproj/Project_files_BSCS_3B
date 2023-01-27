@@ -25,7 +25,7 @@
         </div>
         <div id="">
             <p class="control">
-                <button id="" name="selectBtn" type="submit" onclick="" class="button button-bg-green is-rounded
+                <button id="" name="selectBtn" type="submit" onclick="" class="button selectBtn button-bg-green is-rounded
         is-responsive">
                     <span class="icon">
                         <i class="fa-solid fa-circle-check"></i>

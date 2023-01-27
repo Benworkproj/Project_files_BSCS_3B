@@ -84,8 +84,9 @@ function updateUser( $data ){
 
     $username = $data['username'];
     $user_level = $data['user_level'];
+    $user_id = $data['user_id'];
 
-    $sql = "UPDATE accounts SET username = '$username', user_level = '$user_level' WHERE username = '$username'";
+    $sql = "UPDATE accounts SET username = '$username', user_level = '$user_level' WHERE user_id = '$user_id'";
 
     $conn = DBConnection();
 

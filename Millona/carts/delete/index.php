@@ -32,6 +32,6 @@ CloseConnection($conn);
 
 // redirect to the list page
 if ($stmt) {
-    $_SESSION['success'] = 'User deleted successfully!';
+    $_SESSION['success'] = 'Cart item deleted successfully!';
     header('location: ' . CART_PATH['list']);
 }

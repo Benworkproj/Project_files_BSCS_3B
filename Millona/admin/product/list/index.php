@@ -97,7 +97,7 @@ $result = $conn->query($sql);
                                             <?= $row['price'] ?>
                                         </td>
                                         <td>
-                                            <img src="<?= UPLOADS_PATH ?>/<?= $row['img'] ?>" alt="" width="100px">
+                                            <img src="<?= UPLOADS_PATH ?>/<?= $row['img'] ?>" alt="<?= $row['food_name'] ?>" width="100px">
                                         </td>
 
                                         <td>

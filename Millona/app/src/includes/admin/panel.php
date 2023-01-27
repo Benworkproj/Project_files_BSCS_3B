@@ -67,7 +67,7 @@ class DashboardController
         <div class="logo">
             <a href="" class="simple-text logo-normal">
                 <div class="logo-image-big">
-                    <img src="<?= IMG_ASSETS_PATH ?>/Restaurant Food.png">
+                    <img src="<?= IMG_ASSETS_PATH ?>/Restaurant Food.png" alt='logo'>
                 </div>
             </a>
         </div>
