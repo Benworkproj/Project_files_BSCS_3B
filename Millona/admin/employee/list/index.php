@@ -60,7 +60,13 @@ $employees = $employeeController->getAllEmployee();
 
                 <div class="d-flex justify-content-between align-items-center">
                     <a href="<?= PAGE2 ?>" class="btn btn-primary btn-sm">Add Employee</a>
-                    <a href="<?= LOGOUT ?>" class="btn btn-light btn-sm">Sign out</a>
+
+                    <?php if ($_SESSION['user']['user_level'] === '2') : ?>
+
+                        <a href="<?= LOGOUT ?>" class="btn btn-light btn-sm">Sign out</a>
+
+                    <?php endif; ?>
+
                 </div>
 
                 <div class="row justify-content-center">

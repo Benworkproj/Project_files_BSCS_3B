@@ -11,6 +11,8 @@
 
             <input type="hidden" name="product_id" value="<?= $id ?>">
             <input type="hidden" name="food_name" value="<?= $food_name ?>">
+            <input type="hidden" name="price" value="<?= $price ?>">
+
 
             <span name="PriceTag" class="icon">
                 <i class="fa-solid fa-peso-sign"></i>
@@ -25,7 +27,7 @@
         </div>
         <div id="">
             <p class="control">
-                <button id="" name="selectBtn" type="submit" onclick="" class="button selectBtn button-bg-green is-rounded
+                <button id="" name="selectBtn" type="submit" onclick="" class="button button-bg-green is-rounded
         is-responsive">
                     <span class="icon">
                         <i class="fa-solid fa-circle-check"></i>

@@ -85,6 +85,14 @@
             </button>
         </p>
 
+        <!-- employee list path -->
+        <p class="control">
+            <a  href="<?= SALES_PATH['list'] ?>" class=" button is-primary
+                    is-normal is-responsive">
+                <span>PREVIEW LIST</span>
+            </a>
+        </p>
+
     </div>
 
 </div>

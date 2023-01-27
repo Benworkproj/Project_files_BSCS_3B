@@ -5,6 +5,7 @@ session_start();
 require_once './app/config/env.php';
 require_once './app/core/Redirect.php';
 
+redirect_not_authenticated_user($_SESSION['user'], LOGIN);
 
 if (isset($_SESSION['user'])) {
 
@@ -21,6 +22,5 @@ if (isset($_SESSION['user'])) {
             break;
     }
 
-} else{
-    redirect_not_authenticated_user($_SESSION['user'], LOGIN);
-}
+} 
+

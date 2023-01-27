@@ -78,7 +78,9 @@ class UserView
             if ($key === 'update' ) continue;
 
             if ($key === 'username') {
-                $this->isUserNameExists($value);
+                if ( $this->isUserNameExists($value) ) 
+                    $this->errors['username'] = 'Username already taken. Failed to update';
+
                 $this->validateUserName($value);
             }
 

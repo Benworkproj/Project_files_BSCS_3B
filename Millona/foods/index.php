@@ -17,7 +17,7 @@ $title = 'Foods | Mains';
 
 $base_product_model = new BaseProductModel();
 $products = $base_product_model->getAllProducts();
-
+$data = [];
 
 $cart = new CartController();
 $user_id = $_SESSION['user']['user_id'];
@@ -42,6 +42,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
     }
+
+    // if (isset($_POST['selectBtn']))
+    // {
+    //     $data = $_POST;
+
+    //     $_SESSION['item'] = $data;
+
+    //     header('Location: ' . PAGE3);
+        
+    // }
 }
 
 ?>

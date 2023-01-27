@@ -15,7 +15,14 @@ $(document).ready(function () {
         sessionStorage.setItem("foodName", foodNameTrim);
         
         // redirect to page3
-        window.location.href = "/Millona/page3/";
+        // window.location.href = "/Millona/page3/";
+
+        // get the root path of the website
+        let rootPath = window.location.origin;
+
+        // // get the current base url
+
+        location.href = rootPath + "/Millona/page3/"; 
 
 
       }, 1000);

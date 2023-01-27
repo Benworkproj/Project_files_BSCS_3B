@@ -106,7 +106,15 @@ class DashboardController
                         <p>Sales</p>
                     </a>
                 </li>
+
                 <li class="active text-danger">
+                    <a href="<?= MAINFOODPAGE_ALT ?>">
+                        <i class="fa-solid fa-earth-europe"></i>
+                        <p>View Site</p>
+                    </a>
+                </li>
+
+                <li class="active text-danger py-5">
                     <a href="<?= LOGOUT ?>" class="logout">
                         <span class="icon is-small"><i class="fa-solid fa-sign-out"></i></span>
                         <span>Logout</span>

@@ -28,9 +28,6 @@ if (isset($_POST['submit'])) {
 
 ?>
 
-<?php ?>
-
-
 <?php require_once '../../app/src/includes/auth/header.inc.php' ?>
 
 <div class="center">

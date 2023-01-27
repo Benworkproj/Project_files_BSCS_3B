@@ -125,7 +125,7 @@ if (isset($_POST['update'])) {
                         <div class="row justify-content-center">
                             <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-                                <p class="text-center h4 fw-bold mb-3 mx-1 mx-md-4 mt-4">Create User Account</p>
+                                <p class="text-center h4 fw-bold mb-3 mx-1 mx-md-4 mt-4">Update User Account</p>
 
                                 <form class="mx-1 mx-md-4" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
 

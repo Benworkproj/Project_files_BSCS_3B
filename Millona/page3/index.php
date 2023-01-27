@@ -17,6 +17,7 @@ $title = 'Page 3 Form';
 $error = [];
 $data = [];
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST')
 {
     $data = $_POST;
@@ -37,6 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             redirect_with_params(SALES_PATH['list'], ['message' => 'Sales added successfully']);
         }
     }
+
+
 }
 
 
@@ -49,8 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     <?php require_once '../app/src/includes/page3-form/navbarForPage3.inc.php' ?>
 
     <?php require_once '../app/src/includes/page3-form/form-header.inc.php' ?>
-
-    
     <?php if (isset($error['error_name'])) : ?>
         <div class="notification is-danger">
             <button class="delete"></button>

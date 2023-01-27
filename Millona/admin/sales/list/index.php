@@ -34,17 +34,21 @@ $sales = SalesController::getAllSales();
                     <h4 class="card-title text-center">Sales List</h4>
                 </div>
                 <!-- add a logout button at the end -->
-                <div class="card-body">
-                    <a href="<?= LOGOUT ?>" class="btn btn-danger btn-sm">
-                        Sign Out
-                    </a>
-                </div>
+                <?php if ($_SESSION['user']['user_level'] === '0') : ?>
+                    <div class="card-body">
+                        <a href="<?= LOGOUT ?>" class="btn btn-danger btn-sm">
+                            Sign Out
+                        </a>
+                    </div>
+                <?php endif ?>
+
                 <!-- add product page -->
                 <div class="card-body">
                     <a href="<?= PAGE3 ?>" class="btn btn-primary btn-sm">
                         <i class="fas fa-plus"></i>
                         Add Sales
                     </a>
+                    <a href="<?= MAINFOODPAGE_ALT ?>" class="btn btn-warning btn-sm">FOODS</a>
                 </div>
 
 
