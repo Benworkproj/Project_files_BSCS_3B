@@ -1,0 +1,159 @@
+body{
+	padding:30px;
+	background:#cbf4feff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+/**************************title text**************************/
+.h3{
+	font-family:monospace;
+	
+}
+.font-logo{
+	font-family:monospace;
+	background:#fff;
+	border:2px solid white;
+	box-shadow: 0 0 5px black;
+	width: 200px;
+}
+/*form content*/
+.container{
+	max-width:900px;
+	margin:0 auto;
+
+}
+
+/**************************images display**************************/
+.namebox{
+	background:#edfff0ff;
+	border:2px solid white;
+	box-shadow: 0 0 5px black;
+}
+.img_display{
+	margin:20px;
+	padding:2px;
+	border-radius:10%;
+	border:2px solid white;
+	box-shadow: 0 0 5px black;
+	text-align:center;
+	alt:avatar; 
+	width:90px;
+	height:90px; 
+}
+.display_img{
+	font-size:12px;
+	margin:10px auto;
+	display: flex;
+}
+.img-control{
+	text-align:center;
+}
+.t-shirt{
+	border:2px solid black;
+	border-radius:1%;
+	font-size:12px;
+	margin:10px auto;
+	display: flex;
+}
+.line-1 { 
+	float:left;
+	padding:40px;
+	align-items:center;
+	justifyy-content:center;
+}
+.line-2 {
+	float:right;
+	padding:40px;
+	align-items:center;
+	justifyy-content:center;
+}
+
+.hoody{
+	border:2px solid black;
+	border-radius:1%;
+	font-size:12px;
+	margin:10px auto;
+	display: flex;
+}
+.line-3 {
+	float:left;
+	padding:40px;
+	align-items:center;
+	justifyy-content:center;
+}
+.line-4 {
+	float:right;
+	padding:40px;
+	align-items:center;
+	justifyy-content:center;
+}
+
+/**************************input display**************************/
+.display_input{
+	float:left;
+}
+.col-sm-6 {
+	width:180px;
+}
+.display_input{
+	font-size:12px;
+	border-radius:1%;
+	margin:1px auto;
+	padding:10px;
+}
+
+/**************************Button Display**************************/
+.box{
+	border:2px solid black;
+	border-radius:1%;
+	margin:5px auto;
+	display: flex;
+}
+.display_button {
+	font-size:12px;
+	border-radius:1%;
+	margin:10px auto;
+	padding:2px;
+	float:right;
+	justify-content: center;
+	align-items: center;
+}
+.checkbox{
+	margin:10px auto;
+	padding:10px;
+}
+.checkbox input{
+	margin:10px;
+	padding:px;
+}
+td:hover {
+	color:white;
+	background:#ceebf2ff;
+	cursor:pointer;
+}
+
+
+
+.table tr:hover{
+  cursor: pointer;
+}
+.table thead{
+  background:#eeffc2;
+  text-align:center;
+}
+.table thead tr th{
+  color: 2px solid black;
+  text-align:center;
+  align-items:center;
+}
+.table{
+  border: 2PX solid black;
+  border-radius: 5px ;
+  background-color: white;
+}
+
+
+
+
+/****************************PANEl DESIGN HERE**************************/
