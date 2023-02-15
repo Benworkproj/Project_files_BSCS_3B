@@ -1,4 +1,8 @@
 <?php
+
+// added some comments to make it more readable and understandable
+
+
 // --------------------- DB CREDENTIALS --------------------------------------
 const DB_HOST = 'localhost';
 const DB_NAME = 'foodhouse';
@@ -22,6 +26,9 @@ const LOGO = ROOT_PATH."/public/assets/img/Restaurant Food.png";
 
 const ADMIN = ROOT_PATH . "/admin";
 
+
+// ------------------ Product page PATHS ---------------------------------
+
 const PRODUCT_PATH = [
     'index' => ROOT_PATH . "/admin/product/index.php",
     'create' => ROOT_PATH . "/admin/product/add",
@@ -30,19 +37,22 @@ const PRODUCT_PATH = [
     'list' => ROOT_PATH . "/admin/product/list",
 ];
 
-
+// ------------------ Cart page PATHS ---------------------------------
 const CART_PATH = [
     'list' => ROOT_PATH . "/carts",
     'delete' => ROOT_PATH . "/carts/delete"
 ];
 
 
+// ------------------ Sales page PATHS ---------------------------------
 const SALES_PATH = [
     'index' => ROOT_PATH . "/admin/sales/",
     'delete' => ROOT_PATH . "/admin/sales/delete",
     'list' => ROOT_PATH . "/admin/sales/list",
 ];
 
+
+// ------------------ Employee page PATHS ---------------------------------
 const EMPLOYEE_PATH = [
     'index' => ROOT_PATH . "/admin/employee/",
     'edit' => ROOT_PATH . "/admin/employee/edit",
@@ -50,6 +60,7 @@ const EMPLOYEE_PATH = [
     'list' => ROOT_PATH . "/admin/employee/list",
 ];
 
+// ------------------ Accounts page PATHS ---------------------------------
 const ACCOUNTS_PATH = [
     'index' => ROOT_PATH . "/admin/accounts/",
     'edit' => ROOT_PATH . "/admin/accounts/edit",
@@ -62,3 +73,4 @@ const ACCOUNTS_PATH = [
 // --------------------- FORM CREDENTIALS --------------------------------------
 const USERNAME = ['username', 'Username'];
 const PASSWORD = ['password', 'Password'];
+
