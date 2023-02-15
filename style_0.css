@@ -1,0 +1,121 @@
+body{
+	padding:50px;
+	background:#cbeff8ff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/**************************title text**************************/
+.h3{
+	font-family:monospace;
+	
+}
+
+/*form content*/
+.container{
+	background:#c9c9c4ff;
+	max-width:900px;
+	margin:0 auto;
+	padding:50px;
+	border-radius:1%;
+	box-shadow:rgba(100, 100, 111, 0.8) 1px 7px 29px 1px;
+}
+
+/**************************images display**************************/
+.img_display{
+	border-radius:50%;
+	border:2px solid white;
+	box-shadow: 0 0 10px black;
+	text-align:center;
+	alt:avatar; 
+	width:80px; 
+	height:80px;
+}
+.display_img{
+	font-size:12px;
+	background:#fff;
+	border-radius:1%;
+	margin:10px auto;
+	display: flex;
+	box-shadow:rgba(100, 100, 112, 0.2) 1px 1px 10px 1px;
+}
+.img-control{
+	text-align:center;
+}
+.line-1, .line-2, .line-3, .line-4 {
+	float:left;
+	padding:35px;
+	align-items:center;
+	justify-content:center;
+}
+
+/**************************input display**************************/
+.display_input{
+	float:left;
+}
+.col-sm-6 {
+	width:200px;
+}
+.display_input{
+	background:#fff;
+	font-size:12px;
+	border-radius:1%;
+	margin:10px auto;
+	padding:10px;
+	box-shadow:rgba(100, 100, 112, 0.2) 1px 1px 10px 1px;
+}
+
+/**************************Button Display**************************/
+.display_button {
+	background:#fff;
+	font-size:12px;
+	border-radius:1%;
+	margin:10px auto;
+	padding:2px;
+	float:right;
+	justify-content: center;
+	align-items: center;
+	box-shadow:rgba(100, 100, 112, 0.2) 1px 1px 10px 1px;
+	
+}
+.checkbox{
+	background:#c9c9c4ff;
+	margin:0px auto;
+	padding:1px;
+	box-shadow:rgba(100, 100, 112, 0.2) 1px 1px 10px 1px;
+}
+.checkbox input{
+	margin:10px;
+	padding:px;
+}
+
+.press1, .press2, .press3, .press4, .press5, .press6{
+	height:40px;
+	width:370px;
+	color:white;
+	text-align:Center;
+	font-size:15px;
+	padding:30px;
+	margin:5px auto;
+	text-align:center;
+	box-shadow:rgba(100, 100, 112, 0.2) 1px 1px 10px 1px;
+	
+}
+.press1{
+	background:#1f00c9;
+}
+.press2{
+	background:#cc0000;
+}
+.press3{
+	background:#7db1b2;
+}
+.press4{
+	background:#ba55d3;
+}
+td:hover {
+	color:white;
+	background:#ceebf2ff;
+	cursor:pointer;
+}

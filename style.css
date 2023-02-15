@@ -1,0 +1,456 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Lora:wght@600&family=Poppins:wght@400;500&display=swap');
+
+/* CSS for All */
+*{
+    margin: 0 0;
+    padding: 0 0;
+    font-family: 'Poppins', sans-serif;
+}
+.container{
+    width: 80%;
+    margin: 0 auto;
+    padding: 1%;
+}
+html{
+    width: 100%;
+    height: 100%;
+    /* CSS Smooth Scroll */
+    overflow-y: scroll; 
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+.img-responsive{
+    width: 100%;
+}
+.img-responsive-logo{
+    width: auto;
+    height: 40px;
+}
+.img-curve{
+    border-radius: 15px;
+}
+
+.text-right{
+    text-align: right;
+}
+.text-center{
+    text-align: center;
+}
+.text-c{
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    color: #AA5656;
+    font-size: 60px;
+}
+.text-c-bs{
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    color: #AA5656;
+    font-size: 60px;
+}
+.text-left{
+    text-align: left;
+}
+.text-white{
+    color: white;
+}
+
+.clearfix{
+    clear: both;
+    float: none;
+}
+
+a{
+    color: #bb7878;
+    text-decoration: none;
+}
+a:hover{
+    color: #ff4757;
+}
+
+.btn{
+    padding: 1%;
+    border: none;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+.btn-primary{
+    background-color: #AA5656;
+    color: white;
+    cursor: pointer;
+}
+.btn-primary:hover{
+    color: white;
+    background-color: #ff4757;
+}
+h2{
+    color: #2f3542;
+    font-size: 2rem;
+    margin-bottom: 2%;
+}
+h3{
+    font-size: 1.5rem;
+}
+
+.float-text{
+    position: absolute;
+    bottom: 50px;
+    left: 40%;
+}
+fieldset{
+    border: 1px solid white;
+    margin: 5%;
+    padding: 3%;
+    border-radius: 5px;
+}
+
+
+/* CSSS for navbar section */
+.navbar{
+    background-color: white;
+    position: relative;
+    flex-wrap: wrap;
+    display: flex;
+    top: 0;
+    width: 100%;
+}
+.box-shadow{
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+}
+.fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+  }
+  
+.menu{
+    line-height: 50px;
+}
+.menu ul{
+    list-style-type: none;
+}
+
+.menu ul li{
+    display: inline;
+    padding: 1%;
+    font-weight: bold;
+}
+
+.selection{
+    margin-top: -45px;
+    font-size: 20px;
+}
+.title{
+    font-family: 'Dancing Script', cursive;
+    font-size: 30px;
+    color: #AA5656;
+}
+.navfont{
+    font-family: 'Poppins', sans-serif;
+}
+#menu-icon{
+    font-size: 2rem;
+    cursor: pointer;
+    display: none;
+}
+
+/* CSS for Food SEarch Section */
+
+.food-search{
+    background-image: url(../images/bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 7% 0;
+}
+
+.food-search input[type="search"]{
+    width: 50%;
+    padding: 1%;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+}
+
+
+/* CSS for Categories */
+.categories{
+    padding: 4% 0;
+}
+
+.box-3{
+    width: 28%;
+    float: left;
+    margin: 2%;
+}
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+}
+
+
+/* CSS for Food Menu */
+.food-menu{
+    background-color: #ececec;
+    padding: 4% 0;
+}
+.food-menu-box{
+    width: 43%;
+    margin: 1%;
+    padding: 2%;
+    float: left;
+    background-color: #F1DBBF;
+    border-radius: 15px;
+}
+
+.food-menu-img{
+    width: 20%;
+    float: left;
+}
+
+.food-menu-desc{
+    width: 70%;
+    float: left;
+    margin-left: 8%;
+}
+
+.food-price{
+    font-size: 1.2rem;
+    margin: 2% 0;
+}
+.food-detail{
+    font-size: 1rem;
+    color: #334049;
+}
+.desc{
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+/*Categories Effect*/
+.image {
+	position: relative;
+	width: 400px;
+}
+
+.image__img {
+	width: 100%;
+}
+.float-container{
+    position:fixed;
+}
+.image__overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.6);
+	color: #F1DBBF;
+    border-radius: 15px;
+	font-family: 'Quicksand', sans-serif;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	transition: opacity 0.25s;
+}
+
+.image__overlay--blur {
+	backdrop-filter: blur(5px);
+}
+
+.image__overlay>* {
+	transform: translateY(20px);
+	transition: transform 0.25s;
+}
+
+.image__overlay:hover {
+	opacity: 1;
+}
+
+.image__overlay:hover>* {
+	transform: translateY(0);
+}
+
+.image__title {
+	font-size: 2em;
+	font-weight: bold;
+}
+
+.image__description {
+	font-size: 1.25em;
+	margin-top: 0.25em;
+}
+
+/* CSS for Social */
+.social ul{
+    list-style-type: none;
+}
+.social ul li{
+    display: inline;
+    padding: 1%;
+}
+
+/* for Order Section */
+.order{
+    width: 50%;
+    margin: 0 auto;
+}
+.input-responsive{
+    width: 96%;
+    padding: 1%;
+    margin-bottom: 3%;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+.order-label{
+    margin-bottom: 1%; 
+    font-weight: bold;
+}
+
+/*About Us*/
+.about{
+    width: 100%;
+    height: 100vh;
+    background-color: #F1DBBF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.about.contents img{
+    height: auto;
+    width: 600px;
+    max-width: 100%;
+}
+.texts{
+    width: 510px;
+    max-width: 100%;
+    pad: 0 10px;
+}
+.contents{
+    width: 1280px;
+    max-width: 95%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+.texts h1{
+    color: #AA5656;
+    font-family: 'Dancing Script', cursive;
+    font-size: 85px;
+    margin-bottom: 30px;
+    text-transform: capitalize;
+}
+.texts p{
+    color: #334049;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 2px;
+    margin-bottom: 45px;
+}
+.texts h5{
+    color: #AA5656;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+}
+.heights{
+    line-height: 110px;
+}
+
+
+
+/* CSS for Mobile Size or Smaller Screen */
+
+
+@media only screen and (max-width:768px){
+    .logo{
+        width: 80%;
+        float: none;
+        margin: 1% auto;
+    }
+
+    .menu ul{
+        text-align: center;
+    }
+
+    .food-search input[type="search"]{
+        width: 90%;
+        padding: 2%;
+        margin-bottom: 3%;
+    }
+
+    .btn{
+        width: 91%;
+        padding: 2%;
+    }
+
+    .food-search{
+        padding: 10% 0;
+    }
+
+    .categories{
+        padding: 20% 0;
+    }
+    h2{
+        margin-bottom: 10%;
+    }
+    .box-3{
+        width: 100%;
+        margin: 4% auto;
+    }
+
+    .food-menu{
+        padding: 20% 0;
+    }
+
+    .food-menu-box{
+        width: 90%;
+        padding: 5%;
+        margin-bottom: 5%;
+    }
+    .social{
+        padding: 5% 0;
+    }
+    .order{
+        width: 100%;
+    }
+    
+}
+@media only screen and (max-width:1140px){
+    section{
+        padding: 50px 8%;
+    }
+        .menu-icon{
+            display: initial;
+            color: #2f3542;
+        }
+        section .navbars{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            background: #F1DBBF;
+            transition: .3s;
+        }
+        section .navbars.active{
+            top: 70px;
+        }
+        .navbars a{
+            padding: 1.5rem;
+            display: block;
+        }
+}
